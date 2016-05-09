@@ -8,6 +8,8 @@
 
 using namespace std;
 
+template <typename T>
+void userinput(string text, T & a);
 
 void clearScreen();
 
