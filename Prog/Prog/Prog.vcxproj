@@ -1,0 +1,114 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="12.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|Win32">
+      <Configuration>Debug</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|Win32">
+      <Configuration>Release</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <ProjectGuid>{0E87E997-216B-4848-BADA-A9E0FF38C734}</ProjectGuid>
+    <Keyword>Win32Proj</Keyword>
+    <RootNamespace>Prog</RootNamespace>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>true</UseDebugLibraries>
+    <PlatformToolset>v120</PlatformToolset>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>false</UseDebugLibraries>
+    <PlatformToolset>v120</PlatformToolset>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings">
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <LinkIncremental>true</LinkIncremental>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <LinkIncremental>false</LinkIncremental>
+  </PropertyGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <ClCompile>
+      <PrecompiledHeader>
+      </PrecompiledHeader>
+      <WarningLevel>Level3</WarningLevel>
+      <Optimization>Disabled</Optimization>
+      <PreprocessorDefinitions>WIN32;_DEBUG;_CONSOLE;_LIB;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <SDLCheck>true</SDLCheck>
+    </ClCompile>
+    <Link>
+      <SubSystem>Console</SubSystem>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <PrecompiledHeader>
+      </PrecompiledHeader>
+      <Optimization>MaxSpeed</Optimization>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <PreprocessorDefinitions>WIN32;NDEBUG;_CONSOLE;_LIB;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <SDLCheck>true</SDLCheck>
+    </ClCompile>
+    <Link>
+      <SubSystem>Console</SubSystem>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <OptimizeReferences>true</OptimizeReferences>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <ClCompile Include="..\..\..\..\Projeto Prog\Novo Final\codigoParcial\Cliente.cpp" />
+    <ClCompile Include="..\..\..\..\Projeto Prog\Novo Final\codigoParcial\Data.cpp" />
+    <ClCompile Include="..\..\..\..\Projeto Prog\Novo Final\codigoParcial\main.cpp" />
+    <ClCompile Include="..\..\..\..\Projeto Prog\Novo Final\codigoParcial\Menus.cpp" />
+    <ClCompile Include="..\..\..\..\Projeto Prog\Novo Final\codigoParcial\Produto.cpp" />
+    <ClCompile Include="..\..\..\..\Projeto Prog\Novo Final\codigoParcial\Transacao.cpp" />
+    <ClCompile Include="..\..\..\..\Projeto Prog\Novo Final\codigoParcial\utils.cpp" />
+    <ClCompile Include="..\..\..\..\Projeto Prog\Novo Final\codigoParcial\Vende++.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="..\..\..\..\Projeto Prog\Novo Final\codigoParcial\Cliente.h" />
+    <ClInclude Include="..\..\..\..\Projeto Prog\Novo Final\codigoParcial\Data.h" />
+    <ClInclude Include="..\..\..\..\Projeto Prog\Novo Final\codigoParcial\defs.h" />
+    <ClInclude Include="..\..\..\..\Projeto Prog\Novo Final\codigoParcial\Menus.h" />
+    <ClInclude Include="..\..\..\..\Projeto Prog\Novo Final\codigoParcial\Produto.h" />
+    <ClInclude Include="..\..\..\..\Projeto Prog\Novo Final\codigoParcial\Transacao.h" />
+    <ClInclude Include="..\..\..\..\Projeto Prog\Novo Final\codigoParcial\utils.h" />
+    <ClInclude Include="..\..\..\..\Projeto Prog\Novo Final\codigoParcial\Vende++.h" />
+    <ClInclude Include="Header.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <Text Include="..\..\..\..\Projeto Prog\Novo Final\codigoParcial\clientes.txt" />
+    <Text Include="..\..\..\..\Projeto Prog\Novo Final\codigoParcial\produtos.txt" />
+    <Text Include="..\..\..\..\Projeto Prog\Novo Final\codigoParcial\transacoes.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="..\..\..\..\Projeto Prog\Novo Final\codigoParcial\.lixo" />
+    <None Include="..\..\..\..\Projeto Prog\Novo Final\codigoParcial\LEIA-ME" />
+    <None Include="..\..\..\..\Projeto Prog\Novo Final\codigoParcial\Makefile" />
+  </ItemGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+  </ImportGroup>
+</Project>
