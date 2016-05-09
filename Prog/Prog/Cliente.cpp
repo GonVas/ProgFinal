@@ -1,8 +1,12 @@
 #include "Cliente.h"
 
 
-Cliente::Cliente(ifstream & in){
-  // A IMPLEMENTAR
+Cliente::Cliente(unsigned int id, string nome, Date cartaoCliente, float volCompras)
+{
+  this->id = id;
+  this->nome = nome;
+  this->cartaoCliente = cartaoCliente;
+  this->volCompras = volCompras;
 }
 
 

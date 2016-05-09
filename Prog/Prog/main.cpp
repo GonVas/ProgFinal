@@ -4,6 +4,7 @@
 #include "Vende++.h"
 #include "Menus.h"
 #include "utils.h"
+#include <windows.h>
 
 
 int main(){
@@ -11,8 +12,9 @@ int main(){
 
   // pede a informacoo sobre o nome da loja e os 3 ficheiros com
   // informacoo de clientes, produtos e transacoes
+
   if(! infoInicial(loja, fichClients, fichProdutos, fichTransacoes))
-    return(-1);
+    return(-1);  //This is probabily never going to happen.
 
   // cria uma loja
   VendeMaisMais supermercado(loja, fichClients, fichProdutos, fichTransacoes);

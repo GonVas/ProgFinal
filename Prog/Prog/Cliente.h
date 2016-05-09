@@ -13,11 +13,11 @@ class Cliente {
  private:
   unsigned int id;
   string nome;
-  Data cartaoCliente;
+  Date cartaoCliente;
   float volCompras;
 
  public:
-  Cliente(ifstream & in);
+  Cliente(unsigned int id, string nome, Date cartaoCliente, float volCompras);
   string getNome() const;
   unsigned int getId() const;
   float getVolCompras() const;

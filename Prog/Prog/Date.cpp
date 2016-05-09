@@ -184,7 +184,7 @@ Date::Date() // default constructer sets current date , copied from http://www.c
         }
     }
 
-    //Attention DATE class does not have < or <= beacuse they are not needed simply invert the orde.
+    //Attention DATE class does not have < or <= beacuse they are not needed simply invert the order.
 
     void Date::show() //scope resolution is needed; other classes could have a show() method
     {

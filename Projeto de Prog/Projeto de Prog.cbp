@@ -32,7 +32,29 @@
 			<Add option="-Wall" />
 			<Add option="-fexceptions" />
 		</Compiler>
-		<Unit filename="main.cpp" />
+		<Unit filename="../Prog/Prog/Cliente.cpp" />
+		<Unit filename="../Prog/Prog/Cliente.h" />
+		<Unit filename="../Prog/Prog/Date.cpp" />
+		<Unit filename="../Prog/Prog/Date.h" />
+		<Unit filename="../Prog/Prog/LEIA-ME" />
+		<Unit filename="../Prog/Prog/Makefile" />
+		<Unit filename="../Prog/Prog/Menus.cpp" />
+		<Unit filename="../Prog/Prog/Menus.h" />
+		<Unit filename="../Prog/Prog/Produto.cpp" />
+		<Unit filename="../Prog/Prog/Produto.h" />
+		<Unit filename="../Prog/Prog/Transacao.cpp" />
+		<Unit filename="../Prog/Prog/Transacao.h" />
+		<Unit filename="../Prog/Prog/Vende++.cpp" />
+		<Unit filename="../Prog/Prog/Vende++.h" />
+		<Unit filename="../Prog/Prog/clientes.txt" />
+		<Unit filename="../Prog/Prog/defs.h" />
+		<Unit filename="../Prog/Prog/main.cpp" />
+		<Unit filename="../Prog/Prog/produtos.txt" />
+		<Unit filename="../Prog/Prog/transacoes.txt" />
+		<Unit filename="../Prog/Prog/utils.cpp" />
+		<Unit filename="../Prog/Prog/utils.h" />
+		<Unit filename="../root/Funcs.cpp" />
+		<Unit filename="../root/Funcs.h" />
 		<Extensions>
 			<code_completion />
 			<envvars />

@@ -1,10 +1,41 @@
 #include "Menus.h"
 
+inline void fileopening(ifstream & file, string & filename)  //Simple inline function that is gonna open a file
+{
+  getline(cin, filename);
 
+  file.open(filename);
+
+  while(!(file.good()))      //while it cant open file, send a error message and try again
+  {
+      cout << "Could not find file, try again. \n";
+      getline(cin, filename);
+      file.open(file);
+  }
+
+}
 
 bool infoInicial(string & loja, string & fichClientes, string & fichProdutos, string & fichTransacoes){
 
-  // A IMPLEMENTAR
+  cout << "What is the name of the store. \n";
+  getline(cin, loja);
+
+  cout << "Where is the Client file? \n";
+  ifstream cl_file;
+  fileopening(cl_file, fichClientes);
+  cl_file.close();
+
+  cout << "Where is the Products file? \n";
+  ifstream pro_file;
+  fileopening(cl_file, fichProdutos);
+  pro_file.close();
+
+  cout << "Where is the Transactions file? \n";
+  ifstream tran_file;
+  fileopening(cl_file, fichTransacoes);
+  tran_file.close();
+
+  return true;
 }
 
 /******************************************

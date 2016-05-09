@@ -31,8 +31,10 @@ public: // access specifier; users can only access the PUBLIC members
 	bool operator>(const Date& rhs);
 	bool operator>=(const Date& rhs);
 	bool isLeapYear(int year);
+//===========================================NOT DONE===========================================
 	string getStr(); // get (return) date as a string
 	void save(ofstream & out) const;
+//===========================================NOT DONE===========================================
 	friend ostream& operator<<(ostream& out, const Data & data);
 	void show();
 
