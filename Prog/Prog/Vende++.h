@@ -29,11 +29,17 @@ class VendeMaisMais{
 
  public:
   VendeMaisMais(string loja, string fichClients, string fichProdutos, string fichTransacoes);
-  void MakeClient(ifstream & file);
+  void LoadClientsFromFile(ifstream & file);
+  void LoadProdFromFile(ifstream & file);
+  void LoadTransFromFile(ifstream & file);
+  //void AddDClient();
+  void AddClient(unsigned int id, string nome, Date cartaoCliente, float volCompras );
+  void AddTrans(unsigned int id, Date cartaoTrans, vector <string> prods );
   void listarClientesOrdemAlfa() const;
   void listarProdutos() const;
   void mostraInformacaoCliente(string nome);
   void saveChanges() const;
+  int maxIDclient() const;
 
   friend ostream& operator<<(ostream& out, const VendeMaisMais & supermercado);
 };

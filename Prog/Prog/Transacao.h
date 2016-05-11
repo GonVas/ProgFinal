@@ -17,7 +17,7 @@ using namespace std;
 class Transacao {
  private:
   unsigned int idCliente;
-  Data data; // na forma DD/MM/AAAAA
+  Date data; // na forma DD/MM/AAAAA
   vector<string> produtos;
 
  public:
