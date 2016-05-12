@@ -1,12 +1,19 @@
 #include "Cliente.h"
 
 
-Cliente::Cliente(unsigned int id, string nome, Date cartaoCliente, float volCompras)
+Cliente::Cliente(ifstream & file)
 {
-  this->id = id;
-  this->nome = nome;
-  this->cartaoCliente = cartaoCliente;
-  this->volCompras = volCompras;
+  string info;
+
+  getline(file, info);
+  this->id = stoi(info);
+  getline(file, info);
+  this->date = Date newdate (info);
+  getline(file, info);
+  this->nome = info;
+  getline(file, info);
+  this->volCompras = stof(info);
+
 }
 
 
@@ -22,14 +29,21 @@ float Cliente::getVolCompras() const{
   return volCompras;
 }
 
+Date Cliente::getDate() const
+{
+    return cartaoCliente;
+}
+
 void Cliente::save(ofstream & out) const{
 
   // A IMPLEMENTAR
 
 }
 
-ostream& operator<<(ostream& out, const Cliente & cli){
-  // A IMPLEMENTAR
+ostream& operator<<(ostream& out, const Cliente & cli)
+{
+  out << cli.getId() << endl << cli.getNome() << endl << cli.getDate() << endl << cli.getVolCompras() << endl;
+  return out;
 }
 
 

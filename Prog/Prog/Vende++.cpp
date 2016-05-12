@@ -3,16 +3,27 @@
 //Load all the clients from the file
 void VendeMaisMais::LoadClientsFromFile(ifstream & file)
 {
-    string garbage, fullclient;
+    string s_clientnum;
+    int clientnum;
     //string s_id, s_name, s_values, s_name;
 
-    getline(file,garbage);
+//    getline(file,garbage);
+//
+//    while(getline(file, fullclient))
+//    {
+//        //See utils.cpp for information about extract_from_string
+//        Cliente newclient(stoi(extract_from_string(0, fullclient, ';', 1)), extract_from_string(1, fullclient, ';', 1) , Date(extract_from_string(2, fullclient, ';', 1)), stof(extract_from_string(3, fullclient, ';', 1)) );
+//        //With this line it will extract the different components of client and convert them to the correct types and then create a client
+//        clientes.push_back(newclient);
+//    }
 
-    while(getline(file, fullclient))
+    getline(file, s_clientnum);
+
+    clientnum = stoi(s_clientnum);
+
+    for (int i = 0; i < clientnum; i++)
     {
-        //See utils.cpp for information about extract_from_string
-        Cliente newclient(stoi(extract_from_string(0, fullclient, ';', 1)), extract_from_string(1, fullclient, ';', 1) , Date(extract_from_string(2, fullclient, ';', 1)), stof(extract_from_string(3, fullclient, ';', 1)) );
-        //With this line it will extract the different components of client and convert them to the correct types and then create a client
+        Cliente newclient(file);
         clientes.push_back(newclient);
     }
 
