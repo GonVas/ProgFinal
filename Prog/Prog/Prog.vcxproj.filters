@@ -15,79 +15,76 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="..\..\..\..\Projeto Prog\Novo Final\codigoParcial\Cliente.cpp">
+    <ClCompile Include="utils.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\..\..\Projeto Prog\Novo Final\codigoParcial\Data.cpp">
+    <ClCompile Include="Vende++.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\..\..\Projeto Prog\Novo Final\codigoParcial\main.cpp">
+    <ClCompile Include="Cliente.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\..\..\Projeto Prog\Novo Final\codigoParcial\Menus.cpp">
+    <ClCompile Include="Date.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\..\..\Projeto Prog\Novo Final\codigoParcial\Produto.cpp">
+    <ClCompile Include="main.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\..\..\Projeto Prog\Novo Final\codigoParcial\Transacao.cpp">
+    <ClCompile Include="Menus.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\..\..\Projeto Prog\Novo Final\codigoParcial\utils.cpp">
+    <ClCompile Include="Produto.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\..\..\Projeto Prog\Novo Final\codigoParcial\Vende++.cpp">
+    <ClCompile Include="Transacao.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="..\..\..\..\Projeto Prog\Novo Final\codigoParcial\Cliente.h">
+    <ClInclude Include="Transacao.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\..\..\Projeto Prog\Novo Final\codigoParcial\Data.h">
+    <ClInclude Include="utils.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\..\..\Projeto Prog\Novo Final\codigoParcial\defs.h">
+    <ClInclude Include="Vende++.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\..\..\Projeto Prog\Novo Final\codigoParcial\Menus.h">
+    <ClInclude Include="Cliente.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\..\..\Projeto Prog\Novo Final\codigoParcial\Produto.h">
+    <ClInclude Include="Date.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\..\..\Projeto Prog\Novo Final\codigoParcial\Transacao.h">
+    <ClInclude Include="defs.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\..\..\Projeto Prog\Novo Final\codigoParcial\utils.h">
+    <ClInclude Include="Menus.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\..\..\Projeto Prog\Novo Final\codigoParcial\Vende++.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="Header.h">
+    <ClInclude Include="Produto.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
-    <Text Include="..\..\..\..\Projeto Prog\Novo Final\codigoParcial\transacoes.txt">
+    <Text Include="transacoes.txt">
       <Filter>Resource Files</Filter>
     </Text>
-    <Text Include="..\..\..\..\Projeto Prog\Novo Final\codigoParcial\produtos.txt">
+    <Text Include="clientes.txt">
       <Filter>Resource Files</Filter>
     </Text>
-    <Text Include="..\..\..\..\Projeto Prog\Novo Final\codigoParcial\clientes.txt">
+    <Text Include="produtos.txt">
       <Filter>Resource Files</Filter>
     </Text>
   </ItemGroup>
   <ItemGroup>
-    <None Include="..\..\..\..\Projeto Prog\Novo Final\codigoParcial\LEIA-ME">
+    <None Include=".lixo">
       <Filter>Resource Files</Filter>
     </None>
-    <None Include="..\..\..\..\Projeto Prog\Novo Final\codigoParcial\Makefile">
+    <None Include="LEIA-ME">
       <Filter>Resource Files</Filter>
     </None>
-    <None Include="..\..\..\..\Projeto Prog\Novo Final\codigoParcial\.lixo">
+    <None Include="Makefile">
       <Filter>Resource Files</Filter>
     </None>
   </ItemGroup>

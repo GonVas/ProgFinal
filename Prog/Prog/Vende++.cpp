@@ -1,4 +1,5 @@
 #include "Vende++.h"
+#include "utils.h"
 
 //Load all the clients from the file
 void VendeMaisMais::LoadClientsFromFile(ifstream & file)

@@ -8,7 +8,8 @@ Cliente::Cliente(ifstream & file)
   getline(file, info);
   this->id = stoi(info);
   getline(file, info);
-  this->date = Date newdate (info);
+  Date newdate(info);
+  this->cartaoCliente = newdate;
   getline(file, info);
   this->nome = info;
   getline(file, info);
