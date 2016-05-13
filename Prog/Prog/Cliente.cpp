@@ -17,6 +17,13 @@ Cliente::Cliente(ifstream & file)
 
 }
 
+Cliente::Cliente(unsigned int id, string nome, Date cartaoCliente, float volCompras)
+{
+	this->id = id;
+	this->nome = nome;
+	this->cartaoCliente = cartaoCliente;
+	this->volCompras = volCompras;
+}
 
 string Cliente::getNome() const{
   return nome;

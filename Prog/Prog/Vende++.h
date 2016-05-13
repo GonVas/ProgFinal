@@ -39,7 +39,8 @@ class VendeMaisMais{
   void listarProdutos() const;
   void mostraInformacaoCliente(string nome);
   void saveChanges() const;
-  int maxIDclient() const;
+  int getMaxIDclient() const;
+  void updateMaxIDclient();
 
   friend ostream& operator<<(ostream& out, const VendeMaisMais & supermercado);
 };

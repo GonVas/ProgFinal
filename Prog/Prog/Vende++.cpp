@@ -4,21 +4,21 @@
 //Load all the clients from the file
 void VendeMaisMais::LoadClientsFromFile(ifstream & file)
 {
-    string s_clientnum;
+    string s_clientnum, fullclient, garbage;
     int clientnum;
     //string s_id, s_name, s_values, s_name;
 
-//    getline(file,garbage);
-//
-//    while(getline(file, fullclient))
-//    {
-//        //See utils.cpp for information about extract_from_string
-//        Cliente newclient(stoi(extract_from_string(0, fullclient, ';', 1)), extract_from_string(1, fullclient, ';', 1) , Date(extract_from_string(2, fullclient, ';', 1)), stof(extract_from_string(3, fullclient, ';', 1)) );
-//        //With this line it will extract the different components of client and convert them to the correct types and then create a client
-//        clientes.push_back(newclient);
-//    }
+    getline(file,garbage);
 
-    getline(file, s_clientnum);
+    while(getline(file, fullclient))
+    {
+        //See utils.cpp for information about extract_from_string
+        Cliente newclient(stoi(extract_from_string(0, fullclient, ';', 1)), extract_from_string(1, fullclient, ';', 1) , Date(extract_from_string(2, fullclient, ';', 1)), stof(extract_from_string(3, fullclient, ';', 1)) );
+        //With this line it will extract the different components of client and convert them to the correct types and then create a client
+        clientes.push_back(newclient);
+    }
+
+    /*getline(file, s_clientnum);
 
     clientnum = stoi(s_clientnum);
 
@@ -26,7 +26,7 @@ void VendeMaisMais::LoadClientsFromFile(ifstream & file)
     {
         Cliente newclient(file);
         clientes.push_back(newclient);
-    }
+    }*/
 
 }
 
@@ -71,19 +71,19 @@ void VendeMaisMais::LoadTransFromFile(ifstream & file)
     }
 }
 
-int VendeMaisMais::maxIDclient() //Function to find what is the biggest ID
+void VendeMaisMais::updateMaxIDclient() //Function to find what is the biggest ID
 {
     int maxID = -1;
 
     for (int i = 0; i < (this->clientes).size(); i++) //Loop to go trough all the clients
     {
-        if( (this->clientes).at(i).getID() > maxID ) //(this->clientes).at(i) is a single cliente (this->clientes).at(i).getID() is his ID
+        if( (this->clientes).at(i).getId() > maxID ) //(this->clientes).at(i) is a single cliente (this->clientes).at(i).getID() is his ID
         {
-            maxID = (this->clientes).at(i).getID() ;
+            maxID = (this->clientes).at(i).getId() ;
         }
     }
 
-    return maxID;
+	this->maxClientesId = maxID;
 }
 
 VendeMaisMais::VendeMaisMais(string loja, string fichClients, string fichProdutos, string fichTransacoes){
