@@ -26,6 +26,7 @@ class VendeMaisMais{
   map<string, int> clienteIdx;  // map para "traduzir" nome do cliente no indice dele no vetor de clientes
   map<string, int> produtoIdx;  // map para "traduzir" nome do produto no indice dele no vetor de produtos
   multimap<int, int> transacaoIdx; // multima para "traduzir" o identificador do cliente nos indices das suas transacoes no vetor de transacoes
+  void MakeClientMap(); //Method that will create a map
 
  public:
   VendeMaisMais(string loja, string fichClients, string fichProdutos, string fichTransacoes);

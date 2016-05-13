@@ -86,6 +86,21 @@ void VendeMaisMais::updateMaxIDclient() //Function to find what is the biggest I
 	this->maxClientesId = maxID;
 }
 
+int VendeMaisMais::getMaxIDclient() const
+{
+    updateMaxIDclient();
+    return maxClientesId;
+}
+
+void VendeMaisMais::MakeClientMap()
+{
+    pair <string, int> newpair;
+    for (int i = 0; i < ((this->clientes).size()); i++)
+    {
+        this->clienteIdx[(this->clientes)[i].getNome()] = i;
+    }
+}
+
 VendeMaisMais::VendeMaisMais(string loja, string fichClients, string fichProdutos, string fichTransacoes){
 {
     this->loja = loja;
@@ -102,7 +117,9 @@ VendeMaisMais::VendeMaisMais(string loja, string fichClients, string fichProduto
     ifstream trans_file(fichTransacoes);
     LoadTransFromFile(tans_file);
 
-    maxClientesId = maxIDclient();
+    updateMaxIDclient();
+    MakeClientMap();
+
 }
 
 /*********************************
