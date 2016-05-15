@@ -26,7 +26,10 @@ class VendeMaisMais{
   map<string, int> clienteIdx;  // map para "traduzir" nome do cliente no indice dele no vetor de clientes
   map<string, int> produtoIdx;  // map para "traduzir" nome do produto no indice dele no vetor de produtos
   multimap<int, int> transacaoIdx; // multima para "traduzir" o identificador do cliente nos indices das suas transacoes no vetor de transacoes
-  void MakeClientMap(); //Method that will create a map
+  void makeClientMap(); //Method that will create a map
+  void makeProdMap();
+  void updateMaxIDclient();
+  //int moneymade(); //Sum of all the money made from transactions
 
  public:
   VendeMaisMais(string loja, string fichClients, string fichProdutos, string fichTransacoes);
@@ -40,8 +43,16 @@ class VendeMaisMais{
   void listarProdutos() const;
   void mostraInformacaoCliente(string nome);
   void saveChanges() const;
+  void editClient(unsigned int id, float newvalue);
+  void editClient(string name, float newvalue);
+  void removeClient(unsigned int id);
+  void removeClient(string name);
   int getMaxIDclient() const;
-  void updateMaxIDclient();
+  int clientAmount(); // Number of clients
+  string getloja() const;
+  string getFichClient() const;
+  string getFichProdutos() const;
+  string getFichTransacoes() const;
 
   friend ostream& operator<<(ostream& out, const VendeMaisMais & supermercado);
 };

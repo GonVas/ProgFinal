@@ -33,6 +33,11 @@ unsigned int Cliente::getId() const{
   return id;
 }
 
+void Cliente::setVolCompras(float new_value)
+{
+    this->volCompras = new_value;
+}
+
 float Cliente::getVolCompras() const{
   return volCompras;
 }

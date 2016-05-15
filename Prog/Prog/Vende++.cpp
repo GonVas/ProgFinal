@@ -101,6 +101,15 @@ void VendeMaisMais::MakeClientMap()
     }
 }
 
+void VendeMaisMais::makeProdMap()
+{
+    pair <string, int> newpair;
+    for (int i = 0; i < ((this->produtos).size()); i++)
+    {
+        this->produtoIdx[(this->produtos)[i].getNome()] = i;
+    }
+}
+
 VendeMaisMais::VendeMaisMais(string loja, string fichClients, string fichProdutos, string fichTransacoes){
 {
     this->loja = loja;
@@ -142,17 +151,84 @@ VendeMaisMais::VendeMaisMais(string loja, string fichClients, string fichProduto
  }
 
 // lista os cleinets por ordem alfabetica crescente
-void VendeMaisMais::listarClientesOrdemAlfa() const{
+void VendeMaisMais::listarClientesOrdemAlfa() const
+{
+    map<string, int>::iterator iter;
 
-  // A IMPLEMENTAR
-
+    for (iter = (this->clienteIdx).begin(); iter != (this->clienteIdx).end(); ++iter) {
+           cout << clientes[(iter->second)];
 }
 
 // mostra a informacao individual de um cliente
-void VendeMaisMais::mostraInformacaoCliente(string nome){
+void VendeMaisMais::mostraInformacaoCliente(string nome)
+{
+    int cpos;
+    try
+    {
+       cpos = clientes[clientIdx.at(nome)];
+       cout << this->clientes[cpos];
+
+    }catch (const std::out_of_range& oor){
+    std::cerr << "You typed a name of a client that doesn´t exist. Details: " << oor.what() << '\n';
+  }
+
+}
+
+void VendeMaisMais::editClient(string name, float newvalue)
+{
+    int cpos;
+    try
+    {
+        cpos = clientes[clientIdx.at(nome)];
+        (this->clientes)[cpos].setVolCompras(newvalue);
+
+    }catch (const std::out_of_range& oor) {
+    std::cerr << "You typed a name of a client that doesn´t exist. Details: " << oor.what() << '\n';
+  }
+}
+
+ void VendeMaisMais::removeClient(string name)
+ {
+    int cpos;
+    try
+    {
+        cpos = clientes[clientIdx.at(nome)];
+        (this->clientes).erase(cpos);
+
+    }catch (const std::out_of_range& oor) {
+    std::cerr << "You typed a name of a client that doesn´t exist. Details: " << oor.what() << '\n';
+  }
+}
 
 
+void VendeMaisMais::editClient(unsigned int id, float newvalue)
+{
+    try
+    {
+        cpos = clientes[clientIdx.at(nome)];
+        (this->clientes)[(id-1)].setVolCompras(newvalue);
 
+    }catch (const std::out_of_range& oor) {
+    std::cerr << "You typed a Id of a client that doesn´t exist. Details: " << oor.what() << '\n';
+  }
+}
+
+ void VendeMaisMais::removeClient(unsigned int id)
+ {
+    int cpos;
+    try
+    {
+        cpos = clientes[clientIdx.at(nome)];
+        (this->clientes).erase((id-1));
+
+    }catch (const std::out_of_range& oor) {
+    std::cerr << "You typed a name of a client that doesn´t exist. Details: " << oor.what() << '\n';
+  }
+}
+
+int VendeMaisMais::clientAmount()
+{
+    return this->clientes.size();
 }
 
 /*********************************
@@ -162,7 +238,20 @@ void VendeMaisMais::mostraInformacaoCliente(string nome){
 // lisat os produto por ordem alfabetica crescente
 void VendeMaisMais::listarProdutos() const{
 
-  // A IMPLEMENTAR
+    string alphabetic [(this->produtos).size()];
+    string *pointer = alphabetic;
+    for (int k = 0; k < (this->produtos).size(); k++)
+    {
+        alphabetic[k] = (this->produtos)[k];
+    }
+    sort(pointer, pointer+((this->produtos).size()));
+
+    cout << "Available products: " << endl;
+    for (int k = 0; k < (this->produtos).size(); k++)
+    {
+        cout << *(pointer+k) << endl;
+    }
+
 
 }
 
@@ -182,9 +271,31 @@ void VendeMaisMais::saveChanges() const{
  * Mostrar Loja
  ********************************/
 
+ string VendeMaisMais::getloja()
+ {
+     return this->loja;
+ }
+ string VendeMaisMais::getFichClient()
+ {
+     return this->fichClientes;
+ }
+ string VendeMaisMais::getFichProdutos()
+ {
+     return this->fichProdutos;
+ }
+ string VendeMaisMais::getFichTransacoes()
+ {
+     return this->fichTransacoes;
+ }
+
 // mostra o conteudo de uma loja
 ostream& operator<<(ostream& out, const VendeMaisMais & supermercado){
 
-  // A IMPLEMENTAR
+  out << "Supermarket name: " << supermercado.getloja() << endl;
+  out << "Client path: " << supermercado.getFichClient() << endl;
+  out << "Products path: " << supermercado.getFichProdutos() << endl;
+  out << "Transactions path: " << supermercado.getFichTransacoes() << endl;
+  out << "Amount of clients; " << supermercado.clientAmount() << endl;
+  return out;
 
 }

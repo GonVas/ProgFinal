@@ -127,8 +127,41 @@ string extract_from_string(int iterator, string input, char delimiter, bool remo
 
 unsigned short int leUnsignedShortInt(unsigned short int min, unsigned short int  max){
 
-  // A IMPLEMENTAR
+    unsigned short int a;
+    bool validOperands,anotherOperation;
+    bool outofrange = false;
+    anotherOperation = true;
 
+    do
+    {
+        cin >> a;
+        validOperands = true;
+        if (cin.fail())
+        {
+            validOperands = false;
+            if (cin.eof()) // use cin.eof() only after cin.fail() returns TRUE
+                 anotherOperation = false; //ALTERNATIVE: return 1;
+            else
+            {
+                cout << "Error please try again. \n";
+                cin.clear();
+                cin.ignore(1000,'\n');
+            }
+        }
+            else
+            cin.ignore(1000,'\n'); //clear any additional chars
+
+        if(!(a > min && a < max))
+        {
+            outofrange = true;
+            cout << "Out of range, please try again. \n";
+        }
+        else
+            outofrange = false;
+
+    } while (anotherOperation && !validOperands && outofrange);
+
+    return a;
 }
 
 

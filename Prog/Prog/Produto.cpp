@@ -15,9 +15,8 @@ float Produto::getCusto() const {
 
 ostream& operator<<(ostream& out, const Produto & prod){
 
-
-  // A IMPLEMENTAR
-
+    out << prod.getNome() << " Costs -> " << prod.getCusto() << " €" << endl;
+    return out;
 }
 
 

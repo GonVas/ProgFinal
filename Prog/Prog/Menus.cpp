@@ -51,11 +51,12 @@ unsigned short int menuGestaoClientes(){
   cout << TAB << "2 - Ver informacao cliente" << endl;
   cout << TAB << "3 - Editar cliente" << endl;
   cout << TAB << "4 - Remover cliente" << endl;
-  cout << TAB << "5 - Voltar ao menu inicial" << endl << endl;
+  cout << TAB << "5 - Adicionar cliente" << endl;
+  cout << TAB << "6 - Voltar ao menu inicial" << endl << endl;
   cout << TAB << "Qual a sua opcao: ";
-  opcao = leUnsignedShortInt(1, 5);
+  opcao = leUnsignedShortInt(1, 6);
 
-  if(opcao == 5)
+  if(opcao == 6)
     return 0;
 
   return opcao;
@@ -64,7 +65,8 @@ unsigned short int menuGestaoClientes(){
 
 void opcoesGestaoClientes(VendeMaisMais & supermercado){
   unsigned int opcao;
-  string nome;
+  float newvalue;
+  string nome, cdate;
 
   while((opcao = menuGestaoClientes()))
     switch (opcao){
@@ -74,11 +76,24 @@ void opcoesGestaoClientes(VendeMaisMais & supermercado){
       getline(cin, nome);
       supermercado.mostraInformacaoCliente(nome);
       break;
-    case 3:
+    case 3: cout << "Qual o nome do cliente: ";
+      getline(cin, nome);
+      userinput("What is the new value? ", newvalue);
+      supermercado.editClient(nome, newvalue);
       break;
-    case 4:
+    case 4:cout << "Qual o nome do cliente: ";
+      getline(cin, nome);
+      supermercado.removeClient(name);
+      break;
+    case 5:cout << "Qual o nome do cliente: ";
+      getline(cin, nome);
+      cout << "Qual a data (dd/mm/yy): ";
+      getline(cin, cdate);
+      userinput("What is the new value? ", newvalue);
+      supermercado.AddClient((1 + supermercado.getMaxIDclient()), nome, cdate, newvalue);
       break;
     }
+    return;
 }
 
 /******************************************

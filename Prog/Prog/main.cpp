@@ -1,6 +1,7 @@
 #include <iostream>
 #include <string>
 #include <vector>
+#include <algorithm>
 #include "Vende++.h"
 #include "Menus.h"
 #include "utils.h"
