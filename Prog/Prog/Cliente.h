@@ -23,6 +23,7 @@ class Cliente {
   unsigned int getId() const;
   float getVolCompras() const;
   void setVolCompras(float new_value);
+  void addMoney(float new_value);
   Date getDate() const;
   void save(ofstream & out) const;
   friend ostream& operator<<(ostream& out, const Cliente & cli);  // mostra informacao do cliente no ecra

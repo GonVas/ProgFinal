@@ -26,6 +26,9 @@ class Transacao {
   unsigned int getIdCliente() const;
   void save(ofstream & out) const; // guarda a transacao
   friend ostream& operator<<(ostream& out, const Transacao & trans); // mostra a transacao
+  unsigned int getid() const;
+  Date getdata() const;
+  vector<string> getprodutos();
 };
 
 

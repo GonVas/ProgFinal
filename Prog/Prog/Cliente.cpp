@@ -47,6 +47,11 @@ Date Cliente::getDate() const
     return cartaoCliente;
 }
 
+void Cliente::addMoney(float new_value)
+{
+    this->volCompras += new_value;
+}
+
 void Cliente::save(ofstream & out) const{
 
   // A IMPLEMENTAR

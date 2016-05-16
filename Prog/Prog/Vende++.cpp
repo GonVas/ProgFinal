@@ -255,6 +255,55 @@ void VendeMaisMais::listarProdutos() const{
 
 }
 
+void VendeMaisMais::createtrans(unsigned int id, Date data, string prods)
+{
+    vector <string> vectorprods;
+    string singleprod;
+    int i;
+    float cost = 0.0;
+
+    while( extract_from_string(i, prods, ',', true) != "OVER" ) //see the documentation of extract_from_string in utils.cpp for more info
+        {
+            singleprod = extract_from_string(i, prods, ',', true); //this will extract a single product
+            cost += produtos[((this->produtoIdx).at(singleprod))].getCusto();
+            vectorprods.push_back(singleprod);
+            i++;
+        }
+    Transacao newtrans (id, data, vectorprods);
+    transacoes.push_back(newtrans);
+
+    for(int j = 0; j < (this->clientes).size(); j++)
+    {
+        if (id = (this->clientes)[j])
+        {
+            (this->clientes)[j].addMoney(cost);
+        }
+    }
+
+    transacoesAlterdas = true;
+    clientesAlterados = true;
+}
+
+void VendeMaisMais::singleclienttrans(string name)
+{
+    int cpos;
+    try
+    {
+       cpos = clientes[clientIdx.at(nome)];
+
+       //Need to be finished
+
+    }catch (const std::out_of_range& oor){
+    std::cerr << "You typed a name of a client that doesn´t exist. Details: " << oor.what() << '\n';
+  }
+}
+
+void VendeMaisMais::showtrans(string nome)
+{
+   //Needs alot to work correctly
+
+}
+
 
 /*********************************
  * Preservar Informacao

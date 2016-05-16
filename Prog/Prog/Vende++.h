@@ -38,15 +38,19 @@ class VendeMaisMais{
   void LoadTransFromFile(ifstream & file);
   //void AddDClient();
   void AddClient(unsigned int id, string nome, Date cartaoCliente, float volCompras );
-  void AddTrans(unsigned int id, Date cartaoTrans, vector <string> prods );
+  void AddTrans(unsigned int id, Date cartaoTrans, string prods );
   void listarClientesOrdemAlfa() const;
   void listarProdutos() const;
   void mostraInformacaoCliente(string nome);
+  void listTransactions() const;
+  void showtrans(string nome) const;
   void saveChanges() const;
   void editClient(unsigned int id, float newvalue);
   void editClient(string name, float newvalue);
   void removeClient(unsigned int id);
   void removeClient(string name);
+  void createtrans(unsigned int id, Date data, string prods);
+  void singleclienttrans(string name);
   int getMaxIDclient() const;
   int clientAmount(); // Number of clients
   string getloja() const;

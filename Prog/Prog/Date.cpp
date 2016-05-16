@@ -194,6 +194,7 @@ void Date::save(ofstream & out) const{
   // A IMPLEMENTAR
 }
 
-ostream& operator<<(ostream& out, const Date & date){
-  // A IMPLEMENTAR
+ostream& operator<<(ostream& out, const Date & date)
+{
+  out << date.getDay() << "/" << date.getMonth() << "/" << date.getYear();
 }

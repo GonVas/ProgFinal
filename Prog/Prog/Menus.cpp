@@ -120,18 +120,78 @@ unsigned short int opcao;
   return opcao;
 }
 
+unsigned int menuseeTransactions()
+{
+    clearScreen();
+    cout << TAB_BIG << "Sub Menu Transactions" << endl;
+    cout << endl;
+    cout << TAB << "1 - Single Client" << endl;
+    cout << TAB << "2 - Single Day" << endl;
+    cout << TAB << "3 - Between Dates" << endl;
+    cout << TAB << "4 - Return to main menu" << endl << endl;
+    cout << TAB << "Qual a sua opcao: ";
+    opcao = leUnsignedShortInt(1, 4);
+
+    if(opcao == 4)
+    return 0;
+
+    return opcao;
+}
+
+void subTransactions(VendeMaisMais & supermercado)
+{
+    unsigned int opcao;
+
+    string name;
+    string date1, date2;
+
+    while((opcao = menuseeTransactions()))
+    {
+        switch (opcao)
+        {
+            case 1: cout << "What is the client name?";
+                    getline(cin, name);
+                    supermercado.singleclienttrans(name);
+                    break;
+            case 2: cout << "What is the date (dd/mm/yyyy) ?";
+                    getline(cin, date1);
+                    Date newdate(date1);
+                    supermercado.transday(newdate);
+                    break;
+            case 3: cout << "What is the first date (dd/mm/yyyy) ?";
+                    getline(cin, date1);
+                    Date newdate(date1);
+                    cout << "What is the second date (dd/mm/yyyy) ?";
+                    getline(cin, date2);
+                    Date newdate(date2);
+                    supermercado.transinterval(date1, date2);
+                    break;
+    }
+
+}
+
 void opcoesGestaoTransacoes(VendeMaisMais & supermercado){
   unsigned int opcao;
 
+  string date, prods;
+  unsigned int id;
+
   while((opcao = menuGestaoTransacoes()))
     switch (opcao){
-    case 1:
+    case 1: cout << "Transactions: " << endl;
+        supermercado.listTransactions();
       break;
-    case 2:
+    case 2: subTransactions();
       break;
     case 3:
       break;
-    case 4:
+    case 4: userinput("What is the id? ", id);
+            cout << "what is the date (dd/mm/yyyy)? ";
+            getline(cin, date);
+            Date newdate(date);
+            cout << "What are the products?: ";
+            getline(cin, pods);
+            supermercado.AddTrans(id, newdate, prods);
       break;
     }
 }
@@ -185,7 +245,6 @@ unsigned short int menuInicial(){
 
 void opcoesIniciais(VendeMaisMais & supermercado){
   unsigned int opcao;
-
 
   while((opcao = menuInicial()))
     switch (opcao){
