@@ -1,4 +1,7 @@
 #pragma once
+
+#ifndef VENDE++
+
 #include <iostream>
 #include <string>
 #include <map>
@@ -28,6 +31,7 @@ class VendeMaisMais{
   multimap<int, int> transacaoIdx; // multima para "traduzir" o identificador do cliente nos indices das suas transacoes no vetor de transacoes
   void makeClientMap(); //Method that will create a map
   void makeProdMap();
+  void MakeTransMap();
   void updateMaxIDclient();
   //int moneymade(); //Sum of all the money made from transactions
 
@@ -36,12 +40,12 @@ class VendeMaisMais{
   void LoadClientsFromFile(ifstream & file);
   void LoadProdFromFile(ifstream & file);
   void LoadTransFromFile(ifstream & file);
-  //void AddDClient();
-  void AddClient(unsigned int id, string nome, Date cartaoCliente, float volCompras );
-  void AddTrans(unsigned int id, Date cartaoTrans, string prods );
+  void AddDClient();
+  void AddClient(unsigned int id, string nome, Date cartaoCliente, float volCompras);
+  void AddTrans(unsigned int id, Date cartaoTrans, vector <string> prods );
   void listarClientesOrdemAlfa() const;
-  void listarProdutos() const;
-  void mostraInformacaoCliente(string nome) const;
+  void listarProdutos() ;
+  void mostraInformacaoCliente(string nome) ;
   void listTransactions() const;
   void showtrans(string nome) const;
   void saveChanges() const;
@@ -55,7 +59,7 @@ class VendeMaisMais{
   void showbottom() const;
   void recommendfor(string name) const;
   //singleclientTrans
-  int getMaxIDclient() const;
+  int getMaxIDclient() ;
   int clientAmount(); // Number of clients
   string getloja() const;
   string getFichClient() const;
@@ -64,3 +68,5 @@ class VendeMaisMais{
 
   friend ostream& operator<<(ostream& out, const VendeMaisMais & supermercado);
 };
+
+#endif // !VENDE++

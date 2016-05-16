@@ -5,6 +5,7 @@
 #include <fstream>
 #include <sstream>
 #include <string>
+#include "Date.h"
 
 using namespace std;
 
@@ -35,7 +36,7 @@ public: // access specifier; users can only access the PUBLIC members
 	string getStr(); // get (return) date as a string
 	void save(ofstream & out) const;
 //===========================================NOT DONE===========================================
-	friend ostream& operator<<(ostream& out, const Data & data);
+	friend ostream& operator<<(ostream& out, const Date & data);
 	void show();
 
 private: // PRIVATE data & function members are hidden from the user

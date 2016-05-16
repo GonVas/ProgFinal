@@ -13,7 +13,7 @@ Transacao::Transacao(unsigned int idCliente, Date data, vector<string> & produto
 
 unsigned int Transacao::getid()
 {
-    return this->idCliente;
+	return (this->idCliente);
 }
 Date Transacao::getdata()
 {

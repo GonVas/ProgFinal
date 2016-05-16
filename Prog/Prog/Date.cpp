@@ -24,7 +24,7 @@ Date::Date() // default constructer sets current date , copied from http://www.c
 
     Date::Date(string daymonthyear) // constructors can be overloaded
     {
-        year = stoi(extract_from_string(2, daymonthyear,'/', true ));
+		year = stoi(extract_from_string(2, daymonthyear, '/', true));
         month = stoi(extract_from_string(1, daymonthyear,'/', true ));
         day = stoi(extract_from_string(0, daymonthyear,'/', true ));
         validDay = true;

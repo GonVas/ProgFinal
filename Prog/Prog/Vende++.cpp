@@ -39,7 +39,7 @@ void VendeMaisMais::LoadProdFromFile(ifstream & file)
 
     while(getline(file, fullProduct))
     {
-        Produto newproduct(extract_from_string(0, fullProduct, ';', 1), stof(extract_from_string(1, fullProduct, ';', 1));
+        Produto newproduct(extract_from_string(0, fullProduct, ';', 1), stof(extract_from_string(1, fullProduct, ';', 1)));
         this->produtos.push_back(newproduct);
     }
 }
@@ -69,7 +69,7 @@ void VendeMaisMais::LoadTransFromFile(ifstream & file)
         }
         clientid = stoi(extract_from_string(0, fullTrans, ';', 1));
         Transacao newTrans(clientid, Date(extract_from_string(1, fullTrans, ';', 1)), prods);
-        prods.erase(); //need to reset the prods for another iteration
+        prods.clear(); //need to reset the prods for another iteration
     }
 
 }
@@ -89,13 +89,13 @@ void VendeMaisMais::updateMaxIDclient() //Function to find what is the biggest I
 	this->maxClientesId = maxID;
 }
 
-int VendeMaisMais::getMaxIDclient() const
+int VendeMaisMais::getMaxIDclient() 
 {
-    updateMaxIDclient();
+	updateMaxIDclient();
     return maxClientesId;
 }
 
-void VendeMaisMais::MakeClientMap()
+void VendeMaisMais::makeClientMap()
 {
     pair <string, int> newpair;
     for (int i = 0; i < ((this->clientes).size()); i++)
@@ -106,10 +106,10 @@ void VendeMaisMais::MakeClientMap()
 
 void VendeMaisMais::MakeTransMap()
 {
-    pair <int, int> newpair;
+    
     for (int i = 0; i < ((this->transacoes).size()); i++)
     {
-        this->transacaoIdx[(this->transacoes)[i].getid()] = i;
+		this->transacaoIdx.insert(pair<int, int>((this->transacoes)[i].getid(), i));
     }
 }
 
@@ -122,7 +122,7 @@ void VendeMaisMais::makeProdMap()
     }
 }
 
-VendeMaisMais::VendeMaisMais(string loja, string fichClients, string fichProdutos, string fichTransacoes){
+VendeMaisMais::VendeMaisMais(string loja, string fichClients, string fichProdutos, string fichTransacoes)
 {
     this->loja = loja;
     this->fichClientes = fichClients;
@@ -136,10 +136,10 @@ VendeMaisMais::VendeMaisMais(string loja, string fichClients, string fichProduto
     ifstream prod_file(fichProdutos);
     LoadProdFromFile(prod_file);
     ifstream trans_file(fichTransacoes);
-    LoadTransFromFile(tans_file);
+	LoadTransFromFile(trans_file);
 
     updateMaxIDclient();
-    MakeClientMap();
+	makeClientMap();
     MakeTransMap();
 
 }
@@ -149,14 +149,14 @@ VendeMaisMais::VendeMaisMais(string loja, string fichClients, string fichProduto
  ********************************/
 
 //Adds a client with all the parameters
- void VendeMaisMais::AddClient(unsigned int id, string nome, Date cartaoCliente, float volCompras )
+void VendeMaisMais::AddClient(unsigned int id, string nome, Date cartaoCliente, float volCompras)
  {
      Cliente anotherclient(id, nome, cartaoCliente, volCompras);
      clientes.push_back(anotherclient);
      clientesAlterados = true;
  }
 
- void AddTrans(unsigned int id, Date cartaoTrans, vector <string> prods );
+void VendeMaisMais::AddTrans(unsigned int id, Date cartaoTrans, vector <string> prods)
  {
      Transacao anotherTrans(id, cartaoTrans, prods);
      transacoes.push_back(anotherTrans);
@@ -166,10 +166,11 @@ VendeMaisMais::VendeMaisMais(string loja, string fichClients, string fichProduto
 // lista os cleinets por ordem alfabetica crescente
 void VendeMaisMais::listarClientesOrdemAlfa() const
 {
-    map<string, int>::iterator iter;
+	map<string, int>::const_iterator iter;
 
-    for (iter = (this->clienteIdx).begin(); iter != (this->clienteIdx).end(); ++iter) {
-           cout << clientes[(iter->second)];
+	for (iter = (this->clienteIdx).begin(); iter != (this->clienteIdx).end(); ++iter) 
+		cout << clientes[(iter->second)];
+	
 }
 
 // mostra a informacao individual de um cliente
@@ -178,8 +179,8 @@ void VendeMaisMais::mostraInformacaoCliente(string nome)
     int id;
     try
     {
-        id = (this->clientes)[clientIdx.at(nome)].getId();
-       cout << this->clientes[cpos];
+        id = (this->clientes)[this->clienteIdx.at(nome)].getId();
+       cout << this->clientes[id];
 
     }catch (const std::out_of_range& oor){
     std::cerr << "You typed a name of a client that doesn´t exist. Details: " << oor.what() << '\n';
@@ -192,8 +193,8 @@ void VendeMaisMais::editClient(string name, float newvalue)
     int id;
     try
     {
-        id = (this->clientes)[clientIdx.at(nome)].getId();
-        (this->clientes)[cpos].setVolCompras(newvalue);
+        id = (this->clientes)[this->clienteIdx.at(name)].getId();
+        (this->clientes)[id].setVolCompras(newvalue);
 
     }catch (const std::out_of_range& oor) {
     std::cerr << "You typed a name of a client that doesn´t exist. Details: " << oor.what() << '\n';
@@ -205,8 +206,9 @@ void VendeMaisMais::editClient(string name, float newvalue)
    int id;
     try
     {
-        id = (this->clientes)[clientIdx.at(nome)].getId();
-        (this->clientes).erase(cpos);
+		id = (this->clientes)[this->clienteIdx.at(name)].getId();
+		
+		(this->clientes).erase(clientes[id-1]);
 
     }catch (const std::out_of_range& oor) {
     std::cerr << "You typed a name of a client that doesn´t exist. Details: " << oor.what() << '\n';
@@ -216,10 +218,8 @@ void VendeMaisMais::editClient(string name, float newvalue)
 
 void VendeMaisMais::editClient(unsigned int id, float newvalue)
 {
-    int id;
     try
     {
-        id = (this->clientes)[clientIdx.at(nome)].getId();
         (this->clientes)[(id-1)].setVolCompras(newvalue);
 
     }catch (const std::out_of_range& oor) {
@@ -229,10 +229,8 @@ void VendeMaisMais::editClient(unsigned int id, float newvalue)
 
  void VendeMaisMais::removeClient(unsigned int id)
  {
-    int id;
     try
     {
-        id = (this->clientes)[clientIdx.at(nome)].getId();
         (this->clientes).erase((id-1));
 
     }catch (const std::out_of_range& oor) {
@@ -250,7 +248,8 @@ int VendeMaisMais::clientAmount()
  ********************************/
 
 // lisat os produto por ordem alfabetica crescente
-void VendeMaisMais::listarProdutos() const{
+void VendeMaisMais::listarProdutos() 
+{
 
     string alphabetic [(this->produtos).size()];
     string *pointer = alphabetic;

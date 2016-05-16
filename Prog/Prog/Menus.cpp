@@ -15,7 +15,7 @@ inline void fileopening(ifstream & file, string & filename)  //Simple inline fun
 int cpos;
     try
     {
-       cpos = clientes[clientIdx.at(nome)];
+       cpos = clients[clientIdx.at(nome)];
        cout << this->clientes[cpos];
 
     }catch (const std::out_of_range& oor){
