@@ -12,6 +12,14 @@ inline void fileopening(ifstream & file, string & filename)  //Simple inline fun
       getline(cin, filename);
       file.open(file);
   }
+int cpos;
+    try
+    {
+       cpos = clientes[clientIdx.at(nome)];
+       cout << this->clientes[cpos];
+
+    }catch (const std::out_of_range& oor){
+    std::cerr << "You typed a name of a client that doesn´t exist. Details: " << oor.what() << '\n';
 
 }
 
@@ -151,11 +159,13 @@ void subTransactions(VendeMaisMais & supermercado)
         {
             case 1: cout << "What is the client name?";
                     getline(cin, name);
-                    supermercado.singleclienttrans(name);
+                    cout << "Transactions: " << endl;
+                    supermercado.singleclientTrans(name);
                     break;
             case 2: cout << "What is the date (dd/mm/yyyy) ?";
                     getline(cin, date1);
                     Date newdate(date1);
+                    cout << "Transactions: " << endl;
                     supermercado.transday(newdate);
                     break;
             case 3: cout << "What is the first date (dd/mm/yyyy) ?";
@@ -164,9 +174,10 @@ void subTransactions(VendeMaisMais & supermercado)
                     cout << "What is the second date (dd/mm/yyyy) ?";
                     getline(cin, date2);
                     Date newdate(date2);
+                    cout << "Transactions: " << endl;
                     supermercado.transinterval(date1, date2);
                     break;
-    }
+      }
 
 }
 
@@ -199,18 +210,38 @@ void opcoesGestaoTransacoes(VendeMaisMais & supermercado){
 /******************************************
  * Gestao de Transacoes
  ******************************************/
-unsigned short int menuRecomendacao(){
+unsigned short int menuRecomendacao()
+{
+    clearScreen();
+    cout << TAB_BIG << "Sub Menu Transactions" << endl;
+    cout << endl;
+    cout << TAB << "1 - Show Bottom 10" << endl;
+    cout << TAB << "2 - Recommendation for single client" << endl;
+    cout << TAB << "3 - Recommendation for Bottom 10" << endl;
+    cout << TAB << "4 - Return to main menu" << endl << endl;
+    cout << TAB << "Qual a sua opcao: ";
+    opcao = leUnsignedShortInt(1, 4);
 
+    if(opcao == 4)
+    return 0;
+
+    return opcao;
+}
 }
 
 void opcoesRecomendacao(VendeMaisMais & supermercado){
   unsigned int opcao;
 
+  string name;
+
   while((opcao = menuRecomendacao()))
     switch (opcao){
-    case 1:
+    case 1: cout << "Bottom 10: " << endl;
+            supermercado.showbottom();
       break;
-    case 2:
+    case 2: cout << "What is the client name?";
+            getline(cin, name);
+            supermercado.recommendfor(name);
       break;
     case 3:
       break;

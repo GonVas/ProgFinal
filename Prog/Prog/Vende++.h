@@ -41,7 +41,7 @@ class VendeMaisMais{
   void AddTrans(unsigned int id, Date cartaoTrans, string prods );
   void listarClientesOrdemAlfa() const;
   void listarProdutos() const;
-  void mostraInformacaoCliente(string nome);
+  void mostraInformacaoCliente(string nome) const;
   void listTransactions() const;
   void showtrans(string nome) const;
   void saveChanges() const;
@@ -50,7 +50,11 @@ class VendeMaisMais{
   void removeClient(unsigned int id);
   void removeClient(string name);
   void createtrans(unsigned int id, Date data, string prods);
-  void singleclienttrans(string name);
+  void transday(Date date1) const;
+  void transinterval(Date date1, Date date2) const;
+  void showbottom() const;
+  void recommendfor(string name) const;
+  //singleclientTrans
   int getMaxIDclient() const;
   int clientAmount(); // Number of clients
   string getloja() const;

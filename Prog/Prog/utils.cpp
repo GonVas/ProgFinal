@@ -170,3 +170,72 @@ int leInteiro(int min, int max){
   // A IMPLEMENTAR
 
 }
+
+//===============================================Class Matrix=============================================================
+
+//Constructors
+    Matrix::Matrix()
+    {
+        m_values.resize(3);
+        for (int i = 0; i < 3; i++)
+        {
+            m_values[i].resize(3,0);
+        }
+        bool is_square;
+        int det;
+    }
+
+    Matrix::Matrix(unsigned int dimension)
+    {
+        m_values.resize(dimension);
+        for (int i = 0; i < dimension; i++)
+        {
+            m_values[i].resize(dimension,0);
+        }
+        bool is_square;
+        int det;
+    }
+
+    Matrix::Matrix(unsigned int x, unsigned int y)
+    {
+        m_values.resize(x);
+        for (int i = 0; i < y; i++)
+        {
+            m_values[i].resize(y,0);
+        }
+        bool is_square;
+        int det;
+    }
+//Constructores
+
+    void Matrix::set_x_dimension(unsigned int x)
+    {
+        m_values.resize(x);
+    }
+
+    void Matrix::set_y_dimension(unsigned int x, unsigned int y)
+    {
+        m_values[y].resize(y);
+    }
+
+    void Matrix::fillwith(float filler)
+    {
+        for (int i = 0; i < ((this->m_values).size()); i++)
+        {
+            for (int j = 0; j < ((this->m_values)[i].size()); j++)
+            {
+               ((this->m_values)[i])[j] = filler;
+            }
+        }
+    }
+
+    void Matrix::fill_x_line(float filler)
+    {
+        for (int i = 0; i < ((this->m_values).size()); i++)
+        {
+                ((this->m_values)[i])[0] = filler;
+
+        }
+    }
+
+

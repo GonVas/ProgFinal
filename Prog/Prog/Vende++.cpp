@@ -40,6 +40,7 @@ void VendeMaisMais::LoadProdFromFile(ifstream & file)
     while(getline(file, fullProduct))
     {
         Produto newproduct(extract_from_string(0, fullProduct, ';', 1), stof(extract_from_string(1, fullProduct, ';', 1));
+        this->produtos.push_back(newproduct);
     }
 }
 
@@ -50,6 +51,7 @@ void VendeMaisMais::LoadTransFromFile(ifstream & file)
      vector <string> prods;
      int prodpos;
      int i = 0;
+     int clientid;
 
     getline(file,garbage);
 
@@ -65,10 +67,11 @@ void VendeMaisMais::LoadTransFromFile(ifstream & file)
             prods.push_back(singleprod);
             i++;
         }
-
-        Transacao newTrans(extract_from_string(0, fullProduct, ';', 1), Date(extract_from_string(1, fullProduct, ';', 1)), prods);
+        clientid = stoi(extract_from_string(0, fullTrans, ';', 1));
+        Transacao newTrans(clientid, Date(extract_from_string(1, fullTrans, ';', 1)), prods);
         prods.erase(); //need to reset the prods for another iteration
     }
+
 }
 
 void VendeMaisMais::updateMaxIDclient() //Function to find what is the biggest ID
@@ -101,6 +104,15 @@ void VendeMaisMais::MakeClientMap()
     }
 }
 
+void VendeMaisMais::MakeTransMap()
+{
+    pair <int, int> newpair;
+    for (int i = 0; i < ((this->transacoes).size()); i++)
+    {
+        this->transacaoIdx[(this->transacoes)[i].getid()] = i;
+    }
+}
+
 void VendeMaisMais::makeProdMap()
 {
     pair <string, int> newpair;
@@ -128,6 +140,7 @@ VendeMaisMais::VendeMaisMais(string loja, string fichClients, string fichProduto
 
     updateMaxIDclient();
     MakeClientMap();
+    MakeTransMap();
 
 }
 
@@ -162,10 +175,10 @@ void VendeMaisMais::listarClientesOrdemAlfa() const
 // mostra a informacao individual de um cliente
 void VendeMaisMais::mostraInformacaoCliente(string nome)
 {
-    int cpos;
+    int id;
     try
     {
-       cpos = clientes[clientIdx.at(nome)];
+        id = (this->clientes)[clientIdx.at(nome)].getId();
        cout << this->clientes[cpos];
 
     }catch (const std::out_of_range& oor){
@@ -176,10 +189,10 @@ void VendeMaisMais::mostraInformacaoCliente(string nome)
 
 void VendeMaisMais::editClient(string name, float newvalue)
 {
-    int cpos;
+    int id;
     try
     {
-        cpos = clientes[clientIdx.at(nome)];
+        id = (this->clientes)[clientIdx.at(nome)].getId();
         (this->clientes)[cpos].setVolCompras(newvalue);
 
     }catch (const std::out_of_range& oor) {
@@ -189,10 +202,10 @@ void VendeMaisMais::editClient(string name, float newvalue)
 
  void VendeMaisMais::removeClient(string name)
  {
-    int cpos;
+   int id;
     try
     {
-        cpos = clientes[clientIdx.at(nome)];
+        id = (this->clientes)[clientIdx.at(nome)].getId();
         (this->clientes).erase(cpos);
 
     }catch (const std::out_of_range& oor) {
@@ -203,9 +216,10 @@ void VendeMaisMais::editClient(string name, float newvalue)
 
 void VendeMaisMais::editClient(unsigned int id, float newvalue)
 {
+    int id;
     try
     {
-        cpos = clientes[clientIdx.at(nome)];
+        id = (this->clientes)[clientIdx.at(nome)].getId();
         (this->clientes)[(id-1)].setVolCompras(newvalue);
 
     }catch (const std::out_of_range& oor) {
@@ -215,10 +229,10 @@ void VendeMaisMais::editClient(unsigned int id, float newvalue)
 
  void VendeMaisMais::removeClient(unsigned int id)
  {
-    int cpos;
+    int id;
     try
     {
-        cpos = clientes[clientIdx.at(nome)];
+        id = (this->clientes)[clientIdx.at(nome)].getId();
         (this->clientes).erase((id-1));
 
     }catch (const std::out_of_range& oor) {
@@ -275,7 +289,7 @@ void VendeMaisMais::createtrans(unsigned int id, Date data, string prods)
     for(int j = 0; j < (this->clientes).size(); j++)
     {
         if (id = (this->clientes)[j])
-        {
+        {getVolCompras
             (this->clientes)[j].addMoney(cost);
         }
     }
@@ -284,26 +298,82 @@ void VendeMaisMais::createtrans(unsigned int id, Date data, string prods)
     clientesAlterados = true;
 }
 
-void VendeMaisMais::singleclienttrans(string name)
+void VendeMaisMais::singleclientTrans(string name)
 {
-    int cpos;
+    int id;
     try
     {
-       cpos = clientes[clientIdx.at(nome)];
-
-       //Need to be finished
+        id = (this->clientes)[clientIdx.at(nome)].getId();
+        pair <multimap<int,int>::iterator, multimap<int,int>::iterator> ret;
+        ret = mymm.equal_range(id);
+        for (multimap<int,int>::iterator it=ret.first; it!=ret.second; ++it)
+             {
+                cout << transacoes.at(it->second);
+             }
 
     }catch (const std::out_of_range& oor){
     std::cerr << "You typed a name of a client that doesn´t exist. Details: " << oor.what() << '\n';
   }
 }
 
-void VendeMaisMais::showtrans(string nome)
+void VendeMaisMais::transday(Date date1)
 {
-   //Needs alot to work correctly
+    for (int i = 0; i < (this->transacoes).size(); i++)
+    {
+        if ( ((this->transacoes).at(i)).getdata() == date1)
+        {
+            cout << ((this->transacoes).at(i));
+        }
+    }
+}
+
+void VendeMaisMais::transinterval(date1, date2)
+{
+    for (int i = 0; i < (this->transacoes).size(); i++)
+    {
+        if ( (((this->transacoes).at(i)).getdata() >= date1) && !(((this->transacoes).at(i)).getdata() > date2))
+        {
+            cout << ((this->transacoes).at(i));
+        }
+    }
+}
+
+void VendeMaisMais::showbottom()
+{
+    multimap<float, int> mymap;
+    int breaker = 0;
+
+    value_id container[(this->clientes).size()] = {0};
+
+    for(int i = 0; i < (this->clientes).size(); i++)
+    {
+        mymap[((this->clientes).getVolCompras())] = ((this->clientes).getId());
+    }
+
+    multimap<float, int>::iterator p;
+    for(p = mymap.begin(); p != mymap.end(); p++)
+    {
+        cout << (this->clientes).at(p->second - 1);
+        if(breaker > 9)
+            break;
+        breaker++;
+    }
 
 }
 
+void VendeMaisMais::recommendfor(string name)
+{
+    int pos;
+    try
+    {
+        pos = (this->clientIdx).at(nome);
+
+    }catch (const std::out_of_range& oor) {
+    std::cerr << "You typed a name of a client that doesn´t exist. Details: " << oor.what() << '\n';
+  }
+
+
+}
 
 /*********************************
  * Preservar Informacao
