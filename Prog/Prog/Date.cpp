@@ -1,5 +1,5 @@
 #include "Date.h"
-
+#include <time.h>
 
 Date::Date() // default constructer sets current date , copied from http://www.cplusplus.com/forum/beginner/32329/, credits go to Snarky
     {
@@ -196,5 +196,5 @@ void Date::save(ofstream & out) const{
 
 ostream& operator<<(ostream& out, const Date & date)
 {
-  out << date.getDay() << "/" << date.getMonth() << "/" << date.getYear();
+  out << date.day << "/" << date.month << "/" << date.year;
 }

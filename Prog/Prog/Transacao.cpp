@@ -11,11 +11,11 @@ Transacao::Transacao(unsigned int idCliente, Date data, vector<string> & produto
     this->produtos = produtos;
 }
 
-unsigned int Transacao::getid()
+unsigned int Transacao::getid() const
 {
 	return (this->idCliente);
 }
-Date Transacao::getdata()
+Date Transacao::getdata() const
 {
     return this->data;
 }
@@ -32,7 +32,7 @@ void Transacao::save(ofstream & out) const{ // transacao guardada como na forma 
   // A IMPLEMENTAR
 }
 
-string Transacao::vectortostring()
+string Transacao::vectortostring() const
 {
     string temp;
     for (int i = 0; i < (this->produtos).size(); i++)

@@ -28,6 +28,7 @@ class Transacao {
   friend ostream& operator<<(ostream& out, const Transacao & trans); // mostra a transacao
   unsigned int getid() const;
   Date getdata() const;
+  string vectortostring() const;
   vector<string> getprodutos();
 };
 

@@ -66,5 +66,8 @@ ostream& operator<<(ostream& out, const Cliente & cli)
 
 
 bool operator<(const Cliente &cli1, const Cliente &cli2){
-  // A IMPLEMENTAR
+	if (cli1.getNome() < cli2.getNome())
+		return true;
+	return false;
+	
 }

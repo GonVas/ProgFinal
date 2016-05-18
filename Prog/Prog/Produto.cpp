@@ -1,8 +1,9 @@
 #include "Produto.h"
 
 
-Produto::Produto(ifstream & in){ // nome ; custo
-  // A IMPLEMENTAR
+Produto::Produto(ifstream & in)
+{ 
+
 }
 
 string Produto::getNome() const {
@@ -21,5 +22,7 @@ ostream& operator<<(ostream& out, const Produto & prod){
 
 
 bool operator<(const Produto &prod1, const Produto &prod2){
-  // A IMPLEMENTAR
+	if (prod1.custo < prod2.custo)
+		return true;
+	return false;
 }

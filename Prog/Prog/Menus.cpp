@@ -10,16 +10,8 @@ inline void fileopening(ifstream & file, string & filename)  //Simple inline fun
   {
       cout << "Could not find file, try again. \n";
       getline(cin, filename);
-      file.open(file);
+      file.open(filename);
   }
-int cpos;
-    try
-    {
-       cpos = clients[clientIdx.at(nome)];
-       cout << this->clientes[cpos];
-
-    }catch (const std::out_of_range& oor){
-    std::cerr << "You typed a name of a client that doesn´t exist. Details: " << oor.what() << '\n';
 
 }
 
@@ -74,7 +66,7 @@ unsigned short int menuGestaoClientes(){
 void opcoesGestaoClientes(VendeMaisMais & supermercado){
   unsigned int opcao;
   float newvalue;
-  string nome, cdate;
+  string nome, cdate, name;
 
   while((opcao = menuGestaoClientes()))
     switch (opcao){
@@ -130,6 +122,7 @@ unsigned short int opcao;
 
 unsigned int menuseeTransactions()
 {
+	unsigned int opcao;
     clearScreen();
     cout << TAB_BIG << "Sub Menu Transactions" << endl;
     cout << endl;
@@ -153,35 +146,37 @@ void subTransactions(VendeMaisMais & supermercado)
     string name;
     string date1, date2;
 
-    while((opcao = menuseeTransactions()))
-    {
-        switch (opcao)
-        {
-            case 1: cout << "What is the client name?";
-                    getline(cin, name);
-                    cout << "Transactions: " << endl;
-                    supermercado.singleclientTrans(name);
-                    break;
-            case 2: cout << "What is the date (dd/mm/yyyy) ?";
-                    getline(cin, date1);
-                    Date newdate(date1);
-                    cout << "Transactions: " << endl;
-                    supermercado.transday(newdate);
-                    break;
-            case 3: cout << "What is the first date (dd/mm/yyyy) ?";
-                    getline(cin, date1);
-                    Date newdate(date1);
-                    cout << "What is the second date (dd/mm/yyyy) ?";
-                    getline(cin, date2);
-                    Date newdate(date2);
-                    cout << "Transactions: " << endl;
-                    supermercado.transinterval(date1, date2);
-                    break;
-      }
+	while ((opcao = menuseeTransactions()))
+	{
+		switch (opcao)
+		{
+		case 1: cout << "What is the client name?";
+			getline(cin, name);
+			cout << "Transactions: " << endl;
+			supermercado.singleclientTrans(name);
+			break;
+		case 2: cout << "What is the date (dd/mm/yyyy) ?";
+			getline(cin, date1);
+			Date newdate(date1);
+			cout << "Transactions: " << endl;
+			supermercado.transday(newdate);
+			break;
+		case 3: cout << "What is the first date (dd/mm/yyyy) ?";
+			getline(cin, date1);
+			Date newdate1(date1);
+			cout << "What is the second date (dd/mm/yyyy) ?";
+			getline(cin, date2);
+			Date newdate2(date2);
+			cout << "Transactions: " << endl;
+			supermercado.transinterval(date1, date2);
+			break;
+		}
+	}
 
 }
 
-void opcoesGestaoTransacoes(VendeMaisMais & supermercado){
+void opcoesGestaoTransacoes(VendeMaisMais & supermercado)
+{
   unsigned int opcao;
 
   string date, prods;
@@ -192,7 +187,7 @@ void opcoesGestaoTransacoes(VendeMaisMais & supermercado){
     case 1: cout << "Transactions: " << endl;
         supermercado.listTransactions();
       break;
-    case 2: subTransactions();
+    case 2: subTransactions(supermercado);
       break;
     case 3:
       break;
@@ -201,7 +196,7 @@ void opcoesGestaoTransacoes(VendeMaisMais & supermercado){
             getline(cin, date);
             Date newdate(date);
             cout << "What are the products?: ";
-            getline(cin, pods);
+            getline(cin, prods);
             supermercado.AddTrans(id, newdate, prods);
       break;
     }
@@ -212,6 +207,9 @@ void opcoesGestaoTransacoes(VendeMaisMais & supermercado){
  ******************************************/
 unsigned short int menuRecomendacao()
 {
+	unsigned short int opcao;
+
+
     clearScreen();
     cout << TAB_BIG << "Sub Menu Transactions" << endl;
     cout << endl;
@@ -227,7 +225,7 @@ unsigned short int menuRecomendacao()
 
     return opcao;
 }
-}
+
 
 void opcoesRecomendacao(VendeMaisMais & supermercado){
   unsigned int opcao;

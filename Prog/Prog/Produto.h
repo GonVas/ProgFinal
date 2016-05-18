@@ -1,24 +1,20 @@
 #pragma once
 
-
 #include <iostream>
 #include <fstream>
 #include <sstream>
 #include <string>
 
-
 using namespace std;
-
-
 
 class Produto {
  private:
   string nome;
   float custo;
 
-
  public:
   Produto(string nome, float custo);
+  Produto(ifstream & in);
   string getNome() const;
   float getCusto() const;
   int indiceProduto(string nome); // uso do map para "traduzir" o nome em indice no vetor de produtos
