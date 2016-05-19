@@ -34,6 +34,13 @@ Date::Date() // default constructer sets current date , copied from http://www.c
 
     }
 
+    void Date::setstringDate(string date)
+    {
+        year = stoi(extract_from_string(2, date, '/', true));
+        month = stoi(extract_from_string(1, date,'/', true ));
+        day = stoi(extract_from_string(0, date,'/', true ));
+    }
+
       //... DEFINITION OF OTHER MEMBER FUNCTIONS.....
 
     void Date::Validate() //checks to see if date is valid. (It is a simple validation)
@@ -197,4 +204,5 @@ void Date::save(ofstream & out) const{
 ostream& operator<<(ostream& out, const Date & date)
 {
   out << date.day << "/" << date.month << "/" << date.year;
+  return out;
 }

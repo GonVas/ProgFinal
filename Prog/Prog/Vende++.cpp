@@ -89,7 +89,7 @@ void VendeMaisMais::updateMaxIDclient() //Function to find what is the biggest I
 	this->maxClientesId = maxID;
 }
 
-int VendeMaisMais::getMaxIDclient() 
+int VendeMaisMais::getMaxIDclient()
 {
 	updateMaxIDclient();
     return maxClientesId;
@@ -106,7 +106,7 @@ void VendeMaisMais::makeClientMap()
 
 void VendeMaisMais::MakeTransMap()
 {
-    
+
     for (int i = 0; i < ((this->transacoes).size()); i++)
     {
 		this->transacaoIdx.insert(pair<int, int>((this->transacoes)[i].getid(), i));
@@ -168,9 +168,9 @@ void VendeMaisMais::listarClientesOrdemAlfa() const
 {
 	map<string, int>::const_iterator iter;
 
-	for (iter = (this->clienteIdx).begin(); iter != (this->clienteIdx).end(); ++iter) 
+	for (iter = (this->clienteIdx).begin(); iter != (this->clienteIdx).end(); ++iter)
 		cout << clientes[(iter->second)];
-	
+
 }
 
 // mostra a informacao individual de um cliente
@@ -207,8 +207,8 @@ void VendeMaisMais::editClient(string name, float newvalue)
     try
     {
 		id = (this->clientes)[this->clienteIdx.at(name)].getId();
-		
-		(this->clientes).erase(clientes[id-1]);
+
+		(this->clientes).erase( ((this->clientes).begin()) + (id-1));
 
     }catch (const std::out_of_range& oor) {
     std::cerr << "You typed a name of a client that doesn´t exist. Details: " << oor.what() << '\n';
@@ -231,7 +231,7 @@ void VendeMaisMais::editClient(unsigned int id, float newvalue)
  {
     try
     {
-        (this->clientes).erase((id-1));
+        (this->clientes).erase( (this->clientes).begin()+(id-1));
 
     }catch (const std::out_of_range& oor) {
     std::cerr << "You typed a name of a client that doesn´t exist. Details: " << oor.what() << '\n';
@@ -248,14 +248,14 @@ int VendeMaisMais::clientAmount()
  ********************************/
 
 // lisat os produto por ordem alfabetica crescente
-void VendeMaisMais::listarProdutos() 
+void VendeMaisMais::listarProdutos()
 {
 
     string alphabetic [(this->produtos).size()];
     string *pointer = alphabetic;
     for (int k = 0; k < (this->produtos).size(); k++)
     {
-        alphabetic[k] = (this->produtos)[k];
+        alphabetic[k] = (this->produtos)[k].getNome();
     }
     sort(pointer, pointer+((this->produtos).size()));
 
@@ -287,8 +287,8 @@ void VendeMaisMais::createtrans(unsigned int id, Date data, string prods)
 
     for(int j = 0; j < (this->clientes).size(); j++)
     {
-        if (id = (this->clientes)[j])
-        {getVolCompras
+        if (id == (this->clientes)[j].getId())
+        {
             (this->clientes)[j].addMoney(cost);
         }
     }
@@ -302,9 +302,9 @@ void VendeMaisMais::singleclientTrans(string name)
     int id;
     try
     {
-        id = (this->clientes)[clientIdx.at(nome)].getId();
+        id = (this->clientes)[(this->clienteIdx).at(name)].getId();
         pair <multimap<int,int>::iterator, multimap<int,int>::iterator> ret;
-        ret = mymm.equal_range(id);
+        ret = (this->transacaoIdx).equal_range(id);
         for (multimap<int,int>::iterator it=ret.first; it!=ret.second; ++it)
              {
                 cout << transacoes.at(it->second);
@@ -315,7 +315,8 @@ void VendeMaisMais::singleclientTrans(string name)
   }
 }
 
-void VendeMaisMais::transday(Date date1)
+
+void VendeMaisMais::transday(Date date1) const
 {
     for (int i = 0; i < (this->transacoes).size(); i++)
     {
@@ -326,7 +327,7 @@ void VendeMaisMais::transday(Date date1)
     }
 }
 
-void VendeMaisMais::transinterval(date1, date2)
+void VendeMaisMais::transinterval(Date date1, Date date2) const
 {
     for (int i = 0; i < (this->transacoes).size(); i++)
     {
@@ -337,16 +338,17 @@ void VendeMaisMais::transinterval(date1, date2)
     }
 }
 
-void VendeMaisMais::showbottom()
+void VendeMaisMais::showbottom() const
 {
     multimap<float, int> mymap;
     int breaker = 0;
 
-    value_id container[(this->clientes).size()] = {0};
+    int id [(this->clientes).size()] = {0};
 
     for(int i = 0; i < (this->clientes).size(); i++)
     {
-        mymap[((this->clientes).getVolCompras())] = ((this->clientes).getId());
+
+        mymap.insert(pair<float,int>( ((this->clientes)[i].getVolCompras()), ((this->clientes)[i].getId()) ) );
     }
 
     multimap<float, int>::iterator p;
@@ -360,12 +362,12 @@ void VendeMaisMais::showbottom()
 
 }
 
-void VendeMaisMais::recommendfor(string name)
+void VendeMaisMais::recommendfor(string name) const
 {
     int pos;
     try
     {
-        pos = (this->clientIdx).at(nome);
+        pos = (this->clienteIdx).at(name);
 
     }catch (const std::out_of_range& oor) {
     std::cerr << "You typed a name of a client that doesn´t exist. Details: " << oor.what() << '\n';
@@ -389,25 +391,25 @@ void VendeMaisMais::saveChanges() const{
  * Mostrar Loja
  ********************************/
 
- string VendeMaisMais::getloja()
+ string VendeMaisMais::getloja() const
  {
      return this->loja;
  }
- string VendeMaisMais::getFichClient()
+ string VendeMaisMais::getFichClient() const
  {
      return this->fichClientes;
  }
- string VendeMaisMais::getFichProdutos()
+ string VendeMaisMais::getFichProdutos() const
  {
      return this->fichProdutos;
  }
- string VendeMaisMais::getFichTransacoes()
+ string VendeMaisMais::getFichTransacoes() const
  {
      return this->fichTransacoes;
  }
 
 // mostra o conteudo de uma loja
-ostream& operator<<(ostream& out, const VendeMaisMais & supermercado){
+ostream& operator<<(ostream& out, VendeMaisMais & supermercado){
 
   out << "Supermarket name: " << supermercado.getloja() << endl;
   out << "Client path: " << supermercado.getFichClient() << endl;

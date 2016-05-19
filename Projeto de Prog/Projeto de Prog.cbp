@@ -53,7 +53,6 @@
 		<Unit filename="../Prog/Prog/transacoes.txt" />
 		<Unit filename="../Prog/Prog/utils.cpp" />
 		<Unit filename="../Prog/Prog/utils.h" />
-		<Unit filename="../root/Funcs.cpp" />
 		<Unit filename="../root/Funcs.h" />
 		<Extensions>
 			<code_completion />

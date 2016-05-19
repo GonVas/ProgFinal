@@ -21,7 +21,7 @@ int main(){
   VendeMaisMais supermercado(loja, fichClients, fichProdutos, fichTransacoes);
 
   cout << "Informacao da loja '" << loja << " do supermercado Vende++:" << endl;
-  cout << supermercado << endl;  // mostra estatisticas da loja
+ // cout << supermercado << endl;  // mostra estatisticas da loja
 
   opcoesIniciais(supermercado); // menu inicial com as grandes opcoes
 				// que implementam as funcioanlidades

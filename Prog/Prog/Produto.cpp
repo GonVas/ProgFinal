@@ -2,8 +2,14 @@
 
 
 Produto::Produto(ifstream & in)
-{ 
+{
 
+}
+
+Produto::Produto(string nome, float custo)
+{
+    this->nome = nome;
+    this->custo = custo;
 }
 
 string Produto::getNome() const {

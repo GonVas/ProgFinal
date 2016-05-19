@@ -8,8 +8,12 @@
 
 using namespace std;
 
+void userinput(string text, unsigned int & a);
+void userinput(string text, int & a);
+void userinput(string text, float & a);
 template <typename T>
 void userinput(string text, T & a);
+
 
 void remove_thing_fromstring(string & input, char thing, bool dont_erase_middle);
 string extract_from_string(int iterator, string input, char delimiter, bool removespaces);

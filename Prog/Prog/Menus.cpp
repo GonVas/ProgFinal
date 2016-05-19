@@ -1,4 +1,6 @@
 #include "Menus.h"
+#include "Date.h"
+#include "utils.h"
 
 inline void fileopening(ifstream & file, string & filename)  //Simple inline function that is gonna open a file
 {
@@ -145,6 +147,9 @@ void subTransactions(VendeMaisMais & supermercado)
 
     string name;
     string date1, date2;
+    Date newdate1;
+    Date newdate2;
+    Date newdate;
 
 	while ((opcao = menuseeTransactions()))
 	{
@@ -157,19 +162,24 @@ void subTransactions(VendeMaisMais & supermercado)
 			break;
 		case 2: cout << "What is the date (dd/mm/yyyy) ?";
 			getline(cin, date1);
-			Date newdate(date1);
+			newdate.setstringDate(date1);
 			cout << "Transactions: " << endl;
 			supermercado.transday(newdate);
 			break;
-		case 3: cout << "What is the first date (dd/mm/yyyy) ?";
+		case 3:
+		    {
+		    cout << "What is the first date (dd/mm/yyyy) ?";
 			getline(cin, date1);
-			Date newdate1(date1);
+			newdate1.setstringDate(date1);
 			cout << "What is the second date (dd/mm/yyyy) ?";
 			getline(cin, date2);
-			Date newdate2(date2);
+			newdate2.setstringDate(date2);
 			cout << "Transactions: " << endl;
-			supermercado.transinterval(date1, date2);
+			supermercado.transinterval(newdate1, newdate2);
 			break;
+		    }
+
+
 		}
 	}
 
@@ -179,13 +189,15 @@ void opcoesGestaoTransacoes(VendeMaisMais & supermercado)
 {
   unsigned int opcao;
 
-  string date, prods;
+  string date, prods, singleprod;
   unsigned int id;
+  int i = 0;
+  vector <string> vprods;
 
   while((opcao = menuGestaoTransacoes()))
     switch (opcao){
     case 1: cout << "Transactions: " << endl;
-        supermercado.listTransactions();
+//        supermercado.listTransactions();
       break;
     case 2: subTransactions(supermercado);
       break;
@@ -197,7 +209,13 @@ void opcoesGestaoTransacoes(VendeMaisMais & supermercado)
             Date newdate(date);
             cout << "What are the products?: ";
             getline(cin, prods);
-            supermercado.AddTrans(id, newdate, prods);
+            while( extract_from_string(i, prods, ',', true) != "OVER" ) //see the documentation of extract_from_string in utils.cpp for more info
+        {
+            singleprod = extract_from_string(i, prods, ',', true); //this will extract a single product
+            vprods.push_back(singleprod);
+            i++;
+        }
+            supermercado.AddTrans(id, newdate, vprods);
       break;
     }
 }

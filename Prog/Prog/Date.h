@@ -6,6 +6,7 @@
 #include <sstream>
 #include <string>
 #include "Date.h"
+#include "utils.h"
 
 using namespace std;
 
@@ -20,6 +21,7 @@ public: // access specifier; users can only access the PUBLIC members
 	void setMonth(unsigned int m);
 	void setDay(unsigned int d);
 	void setDate(unsigned int y, unsigned int m, unsigned int d);
+	void setstringDate(string date);
 	unsigned int getYear();
 	unsigned int getMonth();
 	unsigned int getDay();

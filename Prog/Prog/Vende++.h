@@ -58,7 +58,7 @@ class VendeMaisMais{
   void transinterval(Date date1, Date date2) const;
   void showbottom() const;
   void recommendfor(string name) const;
-  //singleclientTrans
+  void singleclientTrans(string name);
   int getMaxIDclient() ;
   int clientAmount(); // Number of clients
   string getloja() const;

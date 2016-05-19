@@ -1,0 +1,93 @@
+# depslib dependency file v1.0
+1463607521 source:e:\c++ programaçao\github\progfinal\prog\prog\cliente.cpp
+	"Cliente.h"
+
+1463351553 e:\c++ programaçao\github\progfinal\prog\prog\cliente.h
+	<iostream>
+	<fstream>
+	<string>
+	"Date.h"
+
+1463611797 e:\c++ programaçao\github\progfinal\prog\prog\date.h
+	<iostream>
+	<fstream>
+	<sstream>
+	<string>
+	"Date.h"
+	"utils.h"
+
+1463617239 e:\c++ programaçao\github\progfinal\prog\prog\utils.h
+	<iostream>
+	<vector>
+	<cstdlib>
+	"defs.h"
+
+1462815240 e:\c++ programaçao\github\progfinal\prog\prog\defs.h
+
+1463616935 source:e:\c++ programaçao\github\progfinal\prog\prog\main.cpp
+	<iostream>
+	<string>
+	<vector>
+	<algorithm>
+	"Vende++.h"
+	"Menus.h"
+	"utils.h"
+	<windows.h>
+
+1463608289 e:\c++ programaçao\github\progfinal\prog\prog\vende++.h
+	<iostream>
+	<string>
+	<map>
+	<algorithm>
+	"defs.h"
+	"Date.h"
+	"Cliente.h"
+	"Transacao.h"
+	"Produto.h"
+	"utils.h"
+
+1463607521 e:\c++ programaçao\github\progfinal\prog\prog\transacao.h
+	<iostream>
+	<fstream>
+	<sstream>
+	<vector>
+	<string>
+	"Date.h"
+
+1463607521 e:\c++ programaçao\github\progfinal\prog\prog\produto.h
+	<iostream>
+	<fstream>
+	<sstream>
+	<string>
+
+1462815240 e:\c++ programaçao\github\progfinal\prog\prog\menus.h
+	<iostream>
+	<fstream>
+	<string>
+	"defs.h"
+	"utils.h"
+	"Vende++.h"
+
+1463611816 source:e:\c++ programaçao\github\progfinal\prog\prog\date.cpp
+	"Date.h"
+	<time.h>
+
+1463617116 source:e:\c++ programaçao\github\progfinal\prog\prog\menus.cpp
+	"Menus.h"
+	"Date.h"
+	"utils.h"
+
+1463617144 source:e:\c++ programaçao\github\progfinal\prog\prog\produto.cpp
+	"Produto.h"
+
+1463607521 source:e:\c++ programaçao\github\progfinal\prog\prog\transacao.cpp
+	"Transacao.h"
+
+1463617028 source:e:\c++ programaçao\github\progfinal\prog\prog\utils.cpp
+	"utils.h"
+	<sstream>
+
+1463616401 source:e:\c++ programaçao\github\progfinal\prog\prog\vende++.cpp
+	"Vende++.h"
+	"utils.h"
+

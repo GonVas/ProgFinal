@@ -36,7 +36,7 @@ class Date
         void show();
 
         void save(ofstream & out) const;
-        friend ostream& operator<<(ostream& out, const Data & data);
+        friend ostream& operator<<(ostream& out, const Date & data);
 
     private: // PRIVATE data & function members are hidden from the user
         unsigned int year; // data member
@@ -55,33 +55,33 @@ struct pos_in_matrix {
   unsigned int pos_y;
 } ;
 
-//===============================================Class Matrix=============================================================
-
-class Matrix
-{
-    public:
-        Matrix() ;
-        Matrix(unsigned int dimension) ;
-        Matrix(unsigned int x, unsigned int y) ;
-
-        void set_x_dimension(unsigned int x);
-        void set_y_dimension(unsigned int x, unsigned int y);
-        void fillwith(float filler);
-        void fill_x_line(float filler);
-        void fill_y_line(unsigned int x, float filler);
-        void set_xy_pos(unsigned int x, unsigned int y, float value);
-        float get_xy_value(unsigned int x, unsigned int y);
-        pos_in_matrix matrix_find (float value_what);
-        unsigned int get_x_dimension();
-        unsigned int get_y_dimension(unsigned int x);
-        bool is_square();
-        int get_det();
-
-    private:
-        vector <vector <float>> m_values(3);
-        bool square;
-        int det;
-};
+////===============================================Class Matrix=============================================================
+//
+//class Matrix
+//{
+//    public:
+//        Matrix() ;
+//        Matrix(unsigned int dimension) ;
+//        Matrix(unsigned int x, unsigned int y) ;
+//
+//        void set_x_dimension(unsigned int x);
+//        void set_y_dimension(unsigned int x, unsigned int y);
+//        void fillwith(float filler);
+//        void fill_x_line(float filler);
+//        void fill_y_line(unsigned int x, float filler);
+//        void set_xy_pos(unsigned int x, unsigned int y, float value);
+//        float get_xy_value(unsigned int x, unsigned int y);
+//        pos_in_matrix matrix_find (float value_what);
+//        unsigned int get_x_dimension();
+//        unsigned int get_y_dimension(unsigned int x);
+//        bool is_square();
+//        int get_det();
+//
+//    private:
+//        vector <vector <float>> m_values(3);
+//        bool square;
+//        int det;
+//};
 
 //===============================================Class Matrix=============================================================
 
