@@ -1,6 +1,6 @@
 #pragma once
 
-#ifndef VENDE++
+
 
 #include <iostream>
 #include <string>
@@ -69,4 +69,4 @@ class VendeMaisMais{
   friend ostream& operator<<(ostream& out, const VendeMaisMais & supermercado);
 };
 
-#endif // !VENDE++
+

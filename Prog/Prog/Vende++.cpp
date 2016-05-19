@@ -1,4 +1,5 @@
 #include "Vende++.h"
+#include <string>
 #include "utils.h"
 
 //Load all the clients from the file
@@ -12,8 +13,10 @@ void VendeMaisMais::LoadClientsFromFile(ifstream & file)
 
     while(getline(file, fullclient))
     {
+        s_clientnum = extract_from_string(0, fullclient, ';',0);
+        clientnum = stoi(s_clientnum);
         //See utils.cpp for information about extract_from_string
-        Cliente newclient(stoi(extract_from_string(0, fullclient, ';', 1)), extract_from_string(1, fullclient, ';', 1) , Date(extract_from_string(2, fullclient, ';', 1)), stof(extract_from_string(3, fullclient, ';', 1)) );
+        Cliente newclient(clientnum, extract_from_string(1, fullclient, ';', 1) , Date(extract_from_string(2, fullclient, ';', 1)), stof(extract_from_string(3, fullclient, ';', 1)) );
         //With this line it will extract the different components of client and convert them to the correct types and then create a client
         clientes.push_back(newclient);
     }
@@ -250,7 +253,7 @@ int VendeMaisMais::clientAmount()
 // lisat os produto por ordem alfabetica crescente
 void VendeMaisMais::listarProdutos()
 {
-
+/*
     string alphabetic [(this->produtos).size()];
     string *pointer = alphabetic;
     for (int k = 0; k < (this->produtos).size(); k++)
@@ -265,7 +268,7 @@ void VendeMaisMais::listarProdutos()
         cout << *(pointer+k) << endl;
     }
 
-
+*/
 }
 
 void VendeMaisMais::createtrans(unsigned int id, Date data, string prods)
@@ -340,10 +343,11 @@ void VendeMaisMais::transinterval(Date date1, Date date2) const
 
 void VendeMaisMais::showbottom() const
 {
+    /*
     multimap<float, int> mymap;
     int breaker = 0;
 
-    int id [(this->clientes).size()] = {0};
+    int id [(this->clientes).size()] = 0;
 
     for(int i = 0; i < (this->clientes).size(); i++)
     {
@@ -359,7 +363,7 @@ void VendeMaisMais::showbottom() const
             break;
         breaker++;
     }
-
+*/
 }
 
 void VendeMaisMais::recommendfor(string name) const

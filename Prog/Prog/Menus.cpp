@@ -29,12 +29,12 @@ bool infoInicial(string & loja, string & fichClientes, string & fichProdutos, st
 
   cout << "Where is the Products file? \n";
   ifstream pro_file;
-  fileopening(cl_file, fichProdutos);
+  fileopening(pro_file, fichProdutos);
   pro_file.close();
 
   cout << "Where is the Transactions file? \n";
   ifstream tran_file;
-  fileopening(cl_file, fichTransacoes);
+  fileopening(tran_file, fichTransacoes);
   tran_file.close();
 
   return true;
