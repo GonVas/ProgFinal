@@ -1,3 +1,5 @@
+
+
 #include "Date.h"
 #include <time.h>
 
@@ -119,26 +121,29 @@ Date::Date() // default constructer sets current date , copied from http://www.c
 
     unsigned int Date::getTodayDay()
     {
-        time_t t = time(NULL);
+        /*time_t t = time(NULL);
 	    tm* timePtr = localtime(&t);
 
-	   return abs(timePtr->tm_mday) ;
+	   return abs(timePtr->tm_mday) ;*/
+		return 1;
     }
 
     unsigned int Date::getTodayMonth()
     {
-        time_t t = time(NULL);
+        /*time_t t = time(NULL);
 	    tm* timePtr = localtime(&t);
 
-	   return abs(timePtr->tm_mon) ;
+	   return abs(timePtr->tm_mon) ;*/
+	   return 1;
     }
 
     unsigned int Date::getTodayYear()
     {
-        time_t t = time(NULL);
+        /*time_t t = time(NULL);
 	    tm* timePtr = localtime(&t);
 
-	   return (abs(timePtr->tm_year) + 1900) ;
+	   return (abs(timePtr->tm_year) + 1900) ;*/
+	   return 1;
     }
 
     string Date::getStr()

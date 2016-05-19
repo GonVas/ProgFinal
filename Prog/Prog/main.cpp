@@ -14,15 +14,27 @@ int main(){
   // pede a informacoo sobre o nome da loja e os 3 ficheiros com
   // informacoo de clientes, produtos e transacoes
 
-  if(! infoInicial(loja, fichClients, fichProdutos, fichTransacoes))
-    return(-1);  //This is probabily never going to happen.
+  //if(! infoInicial(loja, fichClients, fichProdutos, fichTransacoes))
+  //  return(-1);  //This is probabily never going to happen.
+
+  loja = "loja";
+  fichClients = "merda.txt";
+  fichProdutos = "produtos.txt";
+  fichTransacoes = "trans.txt";
 
   // cria uma loja
   VendeMaisMais supermercado(loja, fichClients, fichProdutos, fichTransacoes);
 
+  supermercado.listarClientesOrdemAlfa();
+
+  char pause;
+  cin >> pause;
+
+  
+
   cout << "Informacao da loja '" << loja << " do supermercado Vende++:" << endl;
  // cout << supermercado << endl;  // mostra estatisticas da loja
-
+  
   opcoesIniciais(supermercado); // menu inicial com as grandes opcoes
 				// que implementam as funcioanlidades
 				// disonibilizadas

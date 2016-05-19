@@ -2,34 +2,28 @@
 #include <string>
 #include "utils.h"
 
+
 //Load all the clients from the file
 void VendeMaisMais::LoadClientsFromFile(ifstream & file)
 {
-    string s_clientnum, fullclient, garbage;
-    int clientnum;
-    //string s_id, s_name, s_values, s_name;
-
+    string client, garbage;
+	file.open(this->fichClientes);
+	bool i = file.good();
+	bool j = file.bad();
     getline(file,garbage);
+	cout << garbage << endl;
+	while (getline(file, client, '\n'))
+	{
+		Cliente newcliente(client);
+		cout << "corri" << endl;
+		(this->clientes).push_back(newcliente);
+	}
 
-    while(getline(file, fullclient))
-    {
-        s_clientnum = extract_from_string(0, fullclient, ';',0);
-        clientnum = stoi(s_clientnum);
-        //See utils.cpp for information about extract_from_string
-        Cliente newclient(clientnum, extract_from_string(1, fullclient, ';', 1) , Date(extract_from_string(2, fullclient, ';', 1)), stof(extract_from_string(3, fullclient, ';', 1)) );
-        //With this line it will extract the different components of client and convert them to the correct types and then create a client
-        clientes.push_back(newclient);
-    }
-
-    /*getline(file, s_clientnum);
-
-    clientnum = stoi(s_clientnum);
-
-    for (int i = 0; i < clientnum; i++)
-    {
-        Cliente newclient(file);
-        clientes.push_back(newclient);
-    }*/
+	this->clientesAlterados = true;
+	for (int i = 0; i < (this->clientes).size(); i++)
+		cout << (this->clientes)[i];
+	cout << "Tou aqui e: " << (this->clientes).size() << endl;
+	this->makeClientMap();
 
 }
 
@@ -275,7 +269,7 @@ void VendeMaisMais::createtrans(unsigned int id, Date data, string prods)
 {
     vector <string> vectorprods;
     string singleprod;
-    int i;
+    int i = 0;
     float cost = 0.0;
 
     while( extract_from_string(i, prods, ',', true) != "OVER" ) //see the documentation of extract_from_string in utils.cpp for more info
@@ -413,13 +407,10 @@ void VendeMaisMais::saveChanges() const{
  }
 
 // mostra o conteudo de uma loja
-ostream& operator<<(ostream& out, VendeMaisMais & supermercado){
+ ostream& operator<<(ostream& out, const VendeMaisMais & supermercado)
+{
 
   out << "Supermarket name: " << supermercado.getloja() << endl;
-  out << "Client path: " << supermercado.getFichClient() << endl;
-  out << "Products path: " << supermercado.getFichProdutos() << endl;
-  out << "Transactions path: " << supermercado.getFichTransacoes() << endl;
-  out << "Amount of clients; " << supermercado.clientAmount() << endl;
   return out;
 
 }

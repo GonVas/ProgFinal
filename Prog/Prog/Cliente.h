@@ -4,6 +4,8 @@
 #include <fstream>
 #include <string>
 
+#pragma once
+
 #include "Date.h"
 
 using namespace std;
@@ -17,7 +19,7 @@ class Cliente {
   float volCompras;
 
  public:
-  Cliente(ifstream & file);
+  Cliente(string s_file);
   Cliente(unsigned int id, string nome, Date cartaoCliente, float volCompras);
   string getNome() const;
   unsigned int getId() const;

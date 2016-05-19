@@ -56,7 +56,8 @@ unsigned short int menuGestaoClientes(){
   cout << TAB << "5 - Adicionar cliente" << endl;
   cout << TAB << "6 - Voltar ao menu inicial" << endl << endl;
   cout << TAB << "Qual a sua opcao: ";
-  opcao = leUnsignedShortInt(1, 6);
+  cin >> opcao;
+ // opcao = leUnsignedShortInt(1, 6);
 
   if(opcao == 6)
     return 0;
@@ -282,7 +283,8 @@ unsigned short int menuInicial(){
   cout << TAB << "4 - Recomendacoes" << endl;
   cout << TAB << "5 - Sair do programa" << endl << endl;
   cout << TAB << "Qual a sua opcao: ";
-  opcao = leUnsignedShortInt(1, 5);
+  cin >> opcao;
+  //opcao = leUnsignedShortInt(1, 5);
 
   if(opcao == 5)
     return 0;

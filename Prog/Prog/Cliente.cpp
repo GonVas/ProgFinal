@@ -1,18 +1,23 @@
+
+
 #include "Cliente.h"
+#include <sstream>
 
 
-Cliente::Cliente(ifstream & file)
+Cliente::Cliente(string s_file)
 {
   string info;
+  ifstream stream;
+  stream.open(s_file);
 
-  getline(file, info);
+  getline(stream, info, ';');
   this->id = stoi(info);
-  getline(file, info);
+  getline(stream, info, ';');
   Date newdate(info);
   this->cartaoCliente = newdate;
-  getline(file, info);
+  getline(stream, info, ';');
   this->nome = info;
-  getline(file, info);
+  getline(stream, info, ';');
   this->volCompras = stof(info);
 
 }

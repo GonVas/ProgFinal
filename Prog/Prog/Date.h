@@ -4,6 +4,8 @@
 #include <iostream>
 #include <fstream>
 #include <sstream>
+#pragma once
+
 #include <string>
 #include "Date.h"
 #include "utils.h"
