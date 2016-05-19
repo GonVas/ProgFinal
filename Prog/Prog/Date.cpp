@@ -3,9 +3,9 @@
 
 Date::Date() // default constructer sets current date , copied from http://www.cplusplus.com/forum/beginner/32329/, credits go to Snarky
     {
-        day = getTodayDay() ;
-        month = getTodayMonth() ;
-        year = getTodayYear() ;
+        day = 12 ;
+        month = 12 ;
+        year = 12 ;
         validDay = true;
         validMonth = true;
         validYear = true;
@@ -117,29 +117,33 @@ Date::Date() // default constructer sets current date , copied from http://www.c
         return day;
     }
 
-    unsigned int Date::getTodayDay()
-    {
-        time_t t = time(NULL);
-	    tm* timePtr = localtime(&t);
+  //  unsigned int Date::getTodayDay()
+  //  {
+		//time_t t = time(0);   // get time now
+		//struct tm * now = localtime(&t);
+		///*cout << (now->tm_year + 1900) << '-'
+		//	<< (now->tm_mon + 1) << '-'
+		//	<< now->tm_mday
+		//	<< endl;*/
 
-	   return abs(timePtr->tm_mday) ;
-    }
+		//return abs(now->tm_mday);
+  //  }
 
-    unsigned int Date::getTodayMonth()
-    {
-        time_t t = time(NULL);
-	    tm* timePtr = localtime(&t);
+  //  unsigned int Date::getTodayMonth()
+  //  {
+		//time_t t = time(0);   // get time now
+		//struct tm * now = localtime(&t);
 
-	   return abs(timePtr->tm_mon) ;
-    }
+		//return abs(now->tm_mon + 1);
+  //  }
 
-    unsigned int Date::getTodayYear()
-    {
-        time_t t = time(NULL);
-	    tm* timePtr = localtime(&t);
+  //  unsigned int Date::getTodayYear()
+  //  {
+		//time_t t = time(0);   // get time now
+		//struct tm * now = localtime(&t);
 
-	   return (abs(timePtr->tm_year) + 1900) ;
-    }
+		//return (now->tm_year + 1900);
+  //  }
 
     string Date::getStr()
     {

@@ -250,21 +250,18 @@ int VendeMaisMais::clientAmount()
 // lisat os produto por ordem alfabetica crescente
 void VendeMaisMais::listarProdutos()
 {
-
-    string alphabetic [(this->produtos).size()];
-    string *pointer = alphabetic;
+    vector <string> alphabetic;
     for (int k = 0; k < (this->produtos).size(); k++)
     {
         alphabetic[k] = (this->produtos)[k].getNome();
     }
-    sort(pointer, pointer+((this->produtos).size()));
+	sort(alphabetic.begin(), alphabetic.end());
 
     cout << "Available products: " << endl;
     for (int k = 0; k < (this->produtos).size(); k++)
     {
-        cout << *(pointer+k) << endl;
+		cout << alphabetic[k] << endl;
     }
-
 
 }
 
@@ -272,7 +269,7 @@ void VendeMaisMais::createtrans(unsigned int id, Date data, string prods)
 {
     vector <string> vectorprods;
     string singleprod;
-    int i;
+    int i = 0;
     float cost = 0.0;
 
     while( extract_from_string(i, prods, ',', true) != "OVER" ) //see the documentation of extract_from_string in utils.cpp for more info
@@ -338,29 +335,30 @@ void VendeMaisMais::transinterval(Date date1, Date date2) const
     }
 }
 
-void VendeMaisMais::showbottom() const
-{
-    multimap<float, int> mymap;
-    int breaker = 0;
-
-    int id [(this->clientes).size()] = {0};
-
-    for(int i = 0; i < (this->clientes).size(); i++)
-    {
-
-        mymap.insert(pair<float,int>( ((this->clientes)[i].getVolCompras()), ((this->clientes)[i].getId()) ) );
-    }
-
-    multimap<float, int>::iterator p;
-    for(p = mymap.begin(); p != mymap.end(); p++)
-    {
-        cout << (this->clientes).at(p->second - 1);
-        if(breaker > 9)
-            break;
-        breaker++;
-    }
-
-}
+//void VendeMaisMais::showbottom() const
+//{
+//    multimap<float, int> mymap;
+//    int breaker = 0;
+//
+//	vector <int> id;
+//	id.resize[((this->clientes).size())];
+//
+//    for(int i = 0; i < (this->clientes).size(); i++)
+//    {
+//
+//        mymap.insert(pair<float,int>( ((this->clientes)[i].getVolCompras()), ((this->clientes)[i].getId()) ) );
+//    }
+//
+//    multimap<float, int>::iterator p;
+//    for(p = mymap.begin(); p != mymap.end(); p++)
+//    {
+//        cout << (this->clientes).at(p->second - 1);
+//        if(breaker > 9)
+//            break;
+//        breaker++;
+//    }
+//
+//}
 
 void VendeMaisMais::recommendfor(string name) const
 {
